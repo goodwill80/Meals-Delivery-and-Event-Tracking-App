@@ -11,7 +11,7 @@ import AboutScreen from './src/screens/AboutScreen';
 import EmergencyScreen from './src/screens/EmergencyScreen';
 import AssistanceScreen from './src/screens/AssistanceScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import EventListScreen from "./src/screens/EventListScreen";
+import UpcomingEventScreen from "./src/screens/UpcomingEvent";
 
 import Event1DetailScreen from "./src/screens/eventDetails/Event1DetailScreen"
 import Event2DetailScreen from "./src/screens/eventDetails/Event2DetailScreen"
@@ -26,7 +26,7 @@ const EventStack = createStackNavigator();
 function EventNavigator() {
   return (
     <EventStack.Navigator>
-      <EventStack.Screen name="EventList" component={EventListScreen} />
+      <EventStack.Screen name="Upcoming Events" component={UpcomingEventScreen} />
       <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} />
       <EventStack.Screen name="Event2Detail" component={Event2DetailScreen} />
       <EventStack.Screen name="Event3Detail" component={Event3DetailScreen} />

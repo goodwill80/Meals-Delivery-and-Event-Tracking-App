@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 
-function EventListScreen({ navigation }) {
+function UpcomingEventScreen({ navigation }) {
   return (
     <View>
       <Text style={{ textAlign: "center", marginTop: 50 }}>
-        Welcome to the Event List page!
+        Upcoming Events!
       </Text>
       <Button title="Go to Event 1 Detail" onPress={() => navigation.navigate('Event1Detail')} />
       <Button title="Go to Event 2 Detail" onPress={() => navigation.navigate('Event2Detail')} />
@@ -14,4 +14,4 @@ function EventListScreen({ navigation }) {
   );
 }
 
-export default EventListScreen;
+export default UpcomingEventScreen;
