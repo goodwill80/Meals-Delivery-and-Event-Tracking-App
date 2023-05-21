@@ -7,16 +7,18 @@ import LocationMap from './LocationMap';
 
 const Event2DetailScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <View>
-        <Text style={styles.title}>Event 2</Text>
-        <LocationMap />
-        <CompletionImagePicker />
-        <View style={styles.completionBtn}>
-          <OutlinedButton>Click to Complete Event</OutlinedButton>
+    <View style={styles.container}>
+      <ScrollView>
+        <View>
+          <Text style={styles.title}>Event 2</Text>
+          <LocationMap />
+          <CompletionImagePicker />
+          <View style={styles.completionBtn}>
+            <OutlinedButton>Click to Complete Event</OutlinedButton>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

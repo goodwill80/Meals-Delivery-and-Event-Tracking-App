@@ -65,7 +65,7 @@ function LocationMap() {
 
   return (
     <View>
-      <Text style={styles.title}>Getting there!</Text>
+      <Text style={styles.title}>How to get there?</Text>
       <View style={styles.mapPreview}>{locationPreview}</View>
       <View styles={styles.actions}>
         <OutlinedButton onPress={getLocationHandler} icon="location">

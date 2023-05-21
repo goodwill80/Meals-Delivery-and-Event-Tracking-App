@@ -58,7 +58,15 @@ function CompletionImagePicker() {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+      }}
+    >
+      <Text style={styles.title}>Steps to Complete Event</Text>
       <View style={styles.imagePreview}>{imagePreview}</View>
       <View style={styles.buttonsContainer}>
         <IconButton
@@ -113,5 +121,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     color: 'blue',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
