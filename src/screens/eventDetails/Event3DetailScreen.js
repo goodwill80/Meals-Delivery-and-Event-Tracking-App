@@ -18,7 +18,6 @@ function Event3DetailScreen() {
     // Launch the camera to capture an image
     let result = await ExpoImagePicker.launchCameraAsync({
       mediaTypes: ExpoImagePicker.MediaTypeOptions.All, // Allow capturing both images and videos
-      allowsEditing: true, // Enable editing the captured media
       aspect: [4, 3],
       quality: 1,
     });
