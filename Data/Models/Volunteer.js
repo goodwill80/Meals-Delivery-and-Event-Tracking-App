@@ -1,12 +1,10 @@
 export class scheduledEvent {
   constructor(event) {
-    this.enrolledEvent = {
-      event: event,
-      addresses: [],
-      completed: false,
-      imageUrls: [],
-      remarks: '',
-    };
+    this.event = event;
+    this.addresses = [];
+    this.completed = false;
+    this.imageUrls = [];
+    this.remarks = '';
   }
 }
 

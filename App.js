@@ -65,8 +65,8 @@ function MainTabNavigator() {
 }
 
 function App() {
-  // console.log(volunteers[0].scheduledEvents[0]);
-  // console.log(events);
+  // console.log(volunteers[0].scheduledEvents[4].addresses);
+  // console.log(events[0].volunteersEnrolled[0].name);
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Main">
