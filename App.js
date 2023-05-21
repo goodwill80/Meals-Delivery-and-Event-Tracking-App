@@ -15,7 +15,6 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import UpcomingEventScreen from './src/screens/UpcomingEventScreen';
 import Event1DetailScreen from './src/screens/eventDetails/Event1DetailScreen';
 import Event2DetailScreen from './src/screens/eventDetails/Event2DetailScreen';
-import Event3DetailScreen from './src/screens/eventDetails/Event3DetailScreen';
 
 // Context Provider
 import EventsContextProvider from './Store/context/events-context';
@@ -36,7 +35,6 @@ function EventNavigator() {
       />
       <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} />
       <EventStack.Screen name="Event2Detail" component={Event2DetailScreen} />
-      <EventStack.Screen name="Event3Detail" component={Event3DetailScreen} />
     </EventStack.Navigator>
   );
 }

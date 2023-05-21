@@ -3,7 +3,7 @@ import { Image, View, Platform, Text, StyleSheet } from 'react-native';
 import IconButton from '../../Components/IconButton';
 import * as ExpoImagePicker from 'expo-image-picker';
 
-function Event3DetailScreen() {
+function CompletionImagePicker() {
   const [image, setImage] = useState(null);
 
   const captureImage = async () => {
@@ -59,9 +59,6 @@ function Event3DetailScreen() {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ textAlign: 'center', marginTop: 50, marginBottom: 20 }}>
-        Welcome to Event 3 Detail!
-      </Text>
       <View style={styles.imagePreview}>{imagePreview}</View>
       <View style={styles.buttonsContainer}>
         <IconButton
@@ -87,7 +84,7 @@ function Event3DetailScreen() {
   );
 }
 
-export default Event3DetailScreen;
+export default CompletionImagePicker;
 
 const styles = StyleSheet.create({
   imagePreview: {
