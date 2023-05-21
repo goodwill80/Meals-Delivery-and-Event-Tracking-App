@@ -1,4 +1,5 @@
 import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -11,9 +12,7 @@ import AboutScreen from './src/screens/AboutScreen';
 import EmergencyScreen from './src/screens/EmergencyScreen';
 import AssistanceScreen from './src/screens/AssistanceScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-
 import UpcomingEventScreen from './src/screens/UpcomingEventScreen';
-
 import Event1DetailScreen from './src/screens/eventDetails/Event1DetailScreen';
 import Event2DetailScreen from './src/screens/eventDetails/Event2DetailScreen';
 import Event3DetailScreen from './src/screens/eventDetails/Event3DetailScreen';
@@ -58,7 +57,7 @@ function MainTabNavigator() {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'lightblue',
+        tabBarActiveTintColor: 'blue',
         tabBarInactiveTintColor: 'gray',
       })}
     >
@@ -91,16 +90,81 @@ function App() {
   return (
     <EventsContextProvider>
       <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Main">
-          <Drawer.Screen name="Main" component={MainTabNavigator} />
-          <Drawer.Screen name="About" component={AboutScreen} />
-          <Drawer.Screen name="Emergency" component={EmergencyScreen} />
-          <Drawer.Screen name="Assistance" component={AssistanceScreen} />
-          <Drawer.Screen name="Settings" component={SettingsScreen} />
-        </Drawer.Navigator>
+        <SafeAreaView style={styles.container}>
+          <Drawer.Navigator
+            initialRouteName="Main"
+            screenOptions={{
+              headerTintColor: 'blue',
+              drawerInactiveTintColor: 'gray',
+              drawerActiveTintColor: 'blue',
+            }}
+          >
+            <Drawer.Screen
+              name="Main"
+              component={MainTabNavigator}
+              options={{
+                title: 'Main',
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="home" color={color} size={size} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="About"
+              component={AboutScreen}
+              options={{
+                title: 'About us',
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="people" color={color} size={size} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="Emergency"
+              component={EmergencyScreen}
+              options={{
+                title: 'Emergency',
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="medkit-sharp" color={color} size={size} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="Assistance"
+              component={AssistanceScreen}
+              options={{
+                title: 'Assistance',
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons
+                    name="chatbubble-ellipses-sharp"
+                    color={color}
+                    size={size}
+                  />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{
+                title: 'Settings',
+                drawerIcon: ({ color, size }) => (
+                  <Ionicons name="md-apps-sharp" color={color} size={size} />
+                ),
+              }}
+            />
+          </Drawer.Navigator>
+        </SafeAreaView>
       </NavigationContainer>
     </EventsContextProvider>
   );
 }
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
