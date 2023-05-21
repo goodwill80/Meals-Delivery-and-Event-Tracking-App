@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { View, Text } from 'react-native';
 
 function HomeScreen() {
   return (
     <View>
-      <Text style={{ textAlign: "center", marginTop: 300 }}>
-        Welcome, User!
+      <Text style={{ textAlign: 'center', marginTop: 300 }}>
+        Welcome, user!
       </Text>
     </View>
   );

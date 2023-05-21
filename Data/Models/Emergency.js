@@ -1,8 +1,7 @@
 class Emergency {
-  constructor(id, address, volunteerId, event, remarks) {
-    this.id = id;
-    this.address = address;
-    this.volunteerId = volunteerId;
+  constructor(volunteer, event, remarks) {
+    this.id = Math.round(Math.random() * 1000).toString();
+    this.volunteer = volunteer;
     this.event = event;
     this.remarks = remarks;
   }

@@ -8,7 +8,8 @@ class Event {
     timeSlot,
     reportingTime,
     instructions,
-    mealsOnWheels
+    mealsOnWheels,
+    description
   ) {
     this.id = id;
     this.name = name;
@@ -20,6 +21,7 @@ class Event {
     this.instructions = instructions;
     this.volunteersEnrolled = [];
     this.mealsOnWheels = mealsOnWheels;
+    this.description = description;
   }
 }
 

@@ -1,7 +1,7 @@
 import Volunteer from './Models/Volunteer';
 import Event from './Models/Event';
 import { scheduledEvent } from './Models/Volunteer';
-import Emergency from './Models/Emergency';
+// import Emergency from './Models/Emergency';
 
 //  Volunteers
 export const volunteers = [
@@ -46,7 +46,8 @@ export const events = [
     '0900hrs to 1200hrs',
     '0830hrs',
     'Please be in casual attire.',
-    false
+    false,
+    'Listen to stories and shared wisdoms'
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
@@ -57,7 +58,8 @@ export const events = [
     '1300hrs to 1800hrs',
     '1230hrs',
     'Please feel free to bring along any children story books.',
-    false
+    false,
+    'provide enrichments to afternoon primary school children'
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
@@ -68,7 +70,8 @@ export const events = [
     '1300hrs to 1800hrs',
     '1230hrs',
     'Please feel free to bring along any enrichment story books.',
-    false
+    false,
+    'Provide tuition to secondary school students'
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
@@ -79,7 +82,8 @@ export const events = [
     '1300hrs to 1800hrs',
     '1230hrs',
     'Please feel free to bring along any house cleaning equipments.',
-    false
+    false,
+    'Home cleaning of elderly living alone'
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
@@ -90,9 +94,12 @@ export const events = [
     '1300hrs to 1800hrs',
     '1230hrs',
     'Please ensure you have google map downloaded on your mobile phone',
-    true
+    true,
+    'Delivery of lunch to homes of elderly'
   ),
 ];
+
+export const emergencies = [];
 
 // Enroll volunteer at index 0 in Events
 volunteers[0].scheduledEvents.push(
@@ -103,9 +110,12 @@ volunteers[0].scheduledEvents.push(
   new scheduledEvent(events[4])
 );
 
+// Meals-on-wheel locations
 volunteers[0].scheduledEvents[4].addresses.push(
-  '123, Bishan road',
-  '234, Mount Batten road'
+  '162 Bukit Merah Central #05-3545 Singapore 150162',
+  '5 Jurong West Street 74 Singapore 649151',
+  '4 Changi Business Park Ave 1 Singapore 486016',
+  '668, woodlands ring road #01-05 Singapore 947576'
 );
 
 events[0].volunteersEnrolled.push(volunteers[0]);

@@ -17,6 +17,8 @@ import Event1DetailScreen from './src/screens/eventDetails/Event1DetailScreen';
 import Event2DetailScreen from './src/screens/eventDetails/Event2DetailScreen';
 import Event3DetailScreen from './src/screens/eventDetails/Event3DetailScreen';
 
+// Context Provider
+import EventsContextProvider from './Store/context/events-context';
 import { volunteers, events } from './Data/Dummy_data';
 
 // Creating instances for tab and drawer navigators
@@ -50,16 +52,33 @@ function MainTabNavigator() {
           } else if (route.name === 'Events') {
             iconName = focused ? 'calendar' : 'calendar-outline';
           }
-
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: 'purple',
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Events" component={EventNavigator} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Events"
+        component={EventNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -68,15 +87,17 @@ function App() {
   // console.log(volunteers[0].scheduledEvents[4].addresses);
   // console.log(events[0].volunteersEnrolled[0].name);
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Main">
-        <Drawer.Screen name="Main" component={MainTabNavigator} />
-        <Drawer.Screen name="About" component={AboutScreen} />
-        <Drawer.Screen name="Emergency" component={EmergencyScreen} />
-        <Drawer.Screen name="Assistance" component={AssistanceScreen} />
-        <Drawer.Screen name="Settings" component={SettingsScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <EventsContextProvider>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Main">
+          <Drawer.Screen name="Main" component={MainTabNavigator} />
+          <Drawer.Screen name="About" component={AboutScreen} />
+          <Drawer.Screen name="Emergency" component={EmergencyScreen} />
+          <Drawer.Screen name="Assistance" component={AssistanceScreen} />
+          <Drawer.Screen name="Settings" component={SettingsScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </EventsContextProvider>
   );
 }
 
