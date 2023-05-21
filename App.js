@@ -11,7 +11,7 @@ import AboutScreen from './src/screens/AboutScreen';
 import EmergencyScreen from './src/screens/EmergencyScreen';
 import AssistanceScreen from './src/screens/AssistanceScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import UpcomingEventScreen from "./src/screens/UpcomingEvent";
+import UpcomingEventScreen from "./src/screens/UpcomingEventScreen";
 
 import Event1DetailScreen from "./src/screens/eventDetails/Event1DetailScreen"
 import Event2DetailScreen from "./src/screens/eventDetails/Event2DetailScreen"
