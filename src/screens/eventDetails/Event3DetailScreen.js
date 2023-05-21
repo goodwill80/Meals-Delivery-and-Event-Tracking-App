@@ -47,7 +47,11 @@ function Event3DetailScreen() {
     }
   };
 
-  let imagePreview = <Text>Take an image upon completion of event</Text>;
+  let imagePreview = (
+    <Text style={styles.noImageText}>
+      Take an image upon completion of event
+    </Text>
+  );
 
   if (image) {
     imagePreview = <Image style={styles.image} source={{ uri: image }} />;
@@ -72,6 +76,12 @@ function Event3DetailScreen() {
           color={'white'}
           onPress={pickImage}
         />
+        <IconButton
+          text="Clear"
+          icon="md-play-skip-back-circle-sharp"
+          color={'white'}
+          onPress={() => setImage(null)}
+        />
       </View>
     </View>
   );
@@ -81,7 +91,7 @@ export default Event3DetailScreen;
 
 const styles = StyleSheet.create({
   imagePreview: {
-    width: 200,
+    width: 250,
     height: 200,
     marginVertical: 8,
     justifyContent: 'center',
@@ -89,6 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgray',
     borderRadius: 4,
     overflow: 'hidden',
+    padding: 8,
   },
   image: {
     width: '100%',
@@ -99,5 +110,11 @@ const styles = StyleSheet.create({
     gap: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 12,
+  },
+  noImageText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'blue',
   },
 });

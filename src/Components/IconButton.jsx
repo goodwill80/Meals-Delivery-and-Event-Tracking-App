@@ -25,10 +25,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 10,
+    gap: 14,
     backgroundColor: 'blue',
     padding: 6,
     borderRadius: 8,
+    width: 100,
   },
   text: {
     color: 'white',
