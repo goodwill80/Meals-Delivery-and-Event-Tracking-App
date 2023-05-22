@@ -1,16 +1,15 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import CompletionImagePicker from './CompletionImagePicker';
+import CompletionImagePicker from '../eventPageComponents/CompletionImagePicker';
 import OutlinedButton from '../../Components/OutlineButton';
 
-import LocationMap from './LocationMap';
+import LocationMap from '../eventPageComponents/LocationMap';
 
 const Event2DetailScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
         <View>
-          <Text style={styles.title}>Event 2</Text>
           <LocationMap />
           <CompletionImagePicker />
           <View style={styles.completionBtn}>
