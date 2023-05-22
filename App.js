@@ -20,7 +20,6 @@ import FullMap from "./src/screens/eventPageComponents/FullMap";
 // Context Provider
 import EventsContextProvider from "./Store/context/events-context";
 import themeContext from "./src/theme/themeContext";
-import { volunteers, events } from "./Data/Dummy_data";
 import theme from "./src/theme/theme";
 
 // Creating instances for tab and drawer navigators
