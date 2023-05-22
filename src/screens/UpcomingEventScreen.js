@@ -19,10 +19,10 @@ function UpcomingEventScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.headerTitle}>Upcoming Events!</Text> */}
-      <Button
+      {/* <Button
         title="Event 1"
         onPress={() => navigation.navigate('EventDetail')}
-      />
+      /> */}
 
       <FlatList
         data={events}

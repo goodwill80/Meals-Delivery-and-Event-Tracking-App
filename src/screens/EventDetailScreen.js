@@ -14,7 +14,7 @@ const EventDetailScreen = () => {
       <Text style={styles.maintitle}>{event.event.name}</Text>
       <ScrollView>
         <View>
-          <LocationMap />
+          <LocationMap address={event.event.place} />
           <CompletionImagePicker />
           <View style={styles.completionBtn}>
             <OutlinedButton>Click to Complete Event</OutlinedButton>

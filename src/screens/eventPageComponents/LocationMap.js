@@ -19,12 +19,13 @@ import {
 } from 'expo-location';
 import { getMapPreview, getMapSample } from '../eventUtil/GoogleMapLoader';
 
-function LocationMap() {
+function LocationMap({ address }) {
   const navigation = useNavigation();
   const [pickedLocation, setPickedLocation] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [mode, setMode] = useState(null);
+
   // Retrieve location funtions
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
@@ -83,9 +84,7 @@ function LocationMap() {
     let result = await WebBrowser.openBrowserAsync(
       `https://www.google.com/maps/dir/?api=1&origin=${pickedLocation.lat},${
         pickedLocation.lng
-      }&destination=${'233 Ang Mo kio'}+singapore&travelmode=${
-        mode ? mode : 'driving'
-      }`
+      }&destination=${address}+singapore&travelmode=${mode ? mode : 'driving'}`
     );
     setResult(result);
   };
