@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: '#1F75FE',
   },
   pressed: {
     opacity: 0.7,
@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   text: {
-    color: 'blue',
+    color: '#1F75FE',
   },
 });

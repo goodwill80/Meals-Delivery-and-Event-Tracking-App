@@ -13,13 +13,12 @@ import EmergencyScreen from './src/screens/EmergencyScreen';
 import AssistanceScreen from './src/screens/AssistanceScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import UpcomingEventScreen from './src/screens/UpcomingEventScreen';
-import Event1DetailScreen from './src/screens/eventDetails/Event1DetailScreen';
-import Event2DetailScreen from './src/screens/eventDetails/Event2DetailScreen';
+import EventDetailScreen from './src/screens/EventDetailScreen';
 import FullMap from './src/screens/eventPageComponents/FullMap';
 
 // Context Provider
 import EventsContextProvider from './Store/context/events-context';
-import { volunteers, events } from './Data/Dummy_data';
+// import { volunteers, events } from './Data/Dummy_data';
 
 // Creating instances for tab and drawer navigators
 const Tab = createBottomTabNavigator();
@@ -33,9 +32,18 @@ function EventNavigator() {
       <EventStack.Screen
         name="Upcoming Events"
         component={UpcomingEventScreen}
+        options={{
+          title: 'Events',
+        }}
       />
-      <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} />
-      <EventStack.Screen name="Event2Detail" component={Event2DetailScreen} />
+      {/* <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} /> */}
+      <EventStack.Screen
+        name="EventDetail"
+        component={EventDetailScreen}
+        options={{
+          title: 'Event',
+        }}
+      />
       <EventStack.Screen name="Map View" component={FullMap} />
     </EventStack.Navigator>
   );
@@ -57,7 +65,7 @@ function MainTabNavigator() {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'blue',
+        tabBarActiveTintColor: '#1F75FE',
         tabBarInactiveTintColor: 'gray',
       })}
     >
@@ -94,9 +102,9 @@ function App() {
           <Drawer.Navigator
             initialRouteName="Main"
             screenOptions={{
-              headerTintColor: 'blue',
+              headerTintColor: '#1F75FE',
               drawerInactiveTintColor: 'gray',
-              drawerActiveTintColor: 'blue',
+              drawerActiveTintColor: '#1F75FE',
             }}
           >
             <Drawer.Screen

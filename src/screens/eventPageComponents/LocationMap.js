@@ -153,7 +153,7 @@ function LocationMap() {
         <OutlinedButton
           onPress={getLocationHandler}
           icon="location"
-          color={`${loading ? 'red' : 'blue'}`}
+          color={`${loading ? 'red' : '#1F75FE'}`}
         >
           {loading ? 'Loading...' : 'Load current location'}
         </OutlinedButton>
@@ -161,7 +161,7 @@ function LocationMap() {
           <OutlinedButton
             onPress={navigateToLocation}
             icon="location"
-            color="blue"
+            color="#1F75FE"
           >
             Navigate
           </OutlinedButton>
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   radioInner: {
     width: 15,
     height: 15,
-    backgroundColor: 'green',
+    backgroundColor: '#1F75FE',
     borderRadius: 10,
   },
 });
