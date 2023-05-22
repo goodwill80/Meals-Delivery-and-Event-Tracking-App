@@ -1,24 +1,27 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useState, useEffect, useContext } from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
+import { NavigationContainer, DarkTheme, DefaultTheme } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Ionicons } from "@expo/vector-icons";
+import { EventRegister } from 'react-native-event-listeners';
 
-import HomeScreen from './src/screens/HomeScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
-import AboutScreen from './src/screens/AboutScreen';
-import EmergencyScreen from './src/screens/EmergencyScreen';
-import AssistanceScreen from './src/screens/AssistanceScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
-import UpcomingEventScreen from './src/screens/UpcomingEventScreen';
-import Event1DetailScreen from './src/screens/eventDetails/Event1DetailScreen';
-import Event2DetailScreen from './src/screens/eventDetails/Event2DetailScreen';
+import HomeScreen from "./src/screens/HomeScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
+import AboutScreen from "./src/screens/AboutScreen";
+import EmergencyScreen from "./src/screens/EmergencyScreen";
+import AssistanceScreen from "./src/screens/AssistanceScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
+import UpcomingEventScreen from "./src/screens/UpcomingEventScreen";
+import Event1DetailScreen from "./src/screens/eventDetails/Event1DetailScreen";
+import Event2DetailScreen from "./src/screens/eventDetails/Event2DetailScreen";
 
 // Context Provider
-import EventsContextProvider from './Store/context/events-context';
-import { volunteers, events } from './Data/Dummy_data';
+import EventsContextProvider from "./Store/context/events-context";
+import themeContext from "./src/theme/themeContext";
+import { volunteers, events } from "./Data/Dummy_data";
+import theme from "./src/theme/theme";
 
 // Creating instances for tab and drawer navigators
 const Tab = createBottomTabNavigator();
@@ -42,66 +45,83 @@ function EventNavigator() {
 // MainTabNavigator is a component for the bottom tab navigation.
 function MainTabNavigator() {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
-          } else if (route.name === 'Events') {
-            iconName = focused ? 'calendar' : 'calendar-outline';
-          }
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'gray',
-      })}
-    >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Tab.Screen
-        name="Events"
-        component={EventNavigator}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Tab.Navigator>
+    
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === "Home") {
+                iconName = focused ? "home" : "home-outline";
+              } else if (route.name === "Profile") {
+                iconName = focused ? "person" : "person-outline";
+              } else if (route.name === "Events") {
+                iconName = focused ? "calendar" : "calendar-outline";
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: "blue",
+            tabBarInactiveTintColor: "gray",
+          })}
+        >
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Tab.Screen
+            name="Events"
+            component={EventNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Tab.Navigator>
+      
   );
 }
 
 function App() {
+
+  const theme = useContext(themeContext)
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const listener = EventRegister.addEventListener("changeTheme", (data) => {
+      setDarkMode(data);
+      console.log(data);
+    });
+    return () => {
+      EventRegister.removeEventListener(listener);
+    };
+  }, [darkMode]);
+
   return (
     <EventsContextProvider>
-      <NavigationContainer>
-        <SafeAreaView style={styles.container}>
+      <themeContext.Provider value={darkMode === true ? theme.dark : theme.light}>
+      <NavigationContainer theme={darkMode === true ? DarkTheme : DefaultTheme}>
+        <SafeAreaView style={[styles.container, {backgroundColor:theme.backgroundColor}]}>
           <Drawer.Navigator
             initialRouteName="Main"
             screenOptions={{
-              headerTintColor: 'blue',
-              drawerInactiveTintColor: 'gray',
-              drawerActiveTintColor: 'blue',
+              headerTintColor: "blue",
+              drawerInactiveTintColor: "gray",
+              drawerActiveTintColor: "blue",
             }}
           >
             <Drawer.Screen
               name="Main"
               component={MainTabNavigator}
               options={{
-                title: 'Main',
+                title: "Main",
                 drawerIcon: ({ color, size }) => (
                   <Ionicons name="home" color={color} size={size} />
                 ),
@@ -111,7 +131,7 @@ function App() {
               name="About"
               component={AboutScreen}
               options={{
-                title: 'About us',
+                title: "About us",
                 drawerIcon: ({ color, size }) => (
                   <Ionicons name="people" color={color} size={size} />
                 ),
@@ -121,7 +141,7 @@ function App() {
               name="Emergency"
               component={EmergencyScreen}
               options={{
-                title: 'Emergency',
+                title: "Emergency",
                 drawerIcon: ({ color, size }) => (
                   <Ionicons name="medkit-sharp" color={color} size={size} />
                 ),
@@ -131,7 +151,7 @@ function App() {
               name="Assistance"
               component={AssistanceScreen}
               options={{
-                title: 'Assistance',
+                title: "Assistance",
                 drawerIcon: ({ color, size }) => (
                   <Ionicons
                     name="chatbubble-ellipses-sharp"
@@ -145,7 +165,7 @@ function App() {
               name="Settings"
               component={SettingsScreen}
               options={{
-                title: 'Settings',
+                title: "Settings",
                 drawerIcon: ({ color, size }) => (
                   <Ionicons name="md-apps-sharp" color={color} size={size} />
                 ),
@@ -154,6 +174,7 @@ function App() {
           </Drawer.Navigator>
         </SafeAreaView>
       </NavigationContainer>
+    </themeContext.Provider>
     </EventsContextProvider>
   );
 }
@@ -163,6 +184,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
 });
