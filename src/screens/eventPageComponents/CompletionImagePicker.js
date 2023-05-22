@@ -48,9 +48,12 @@ function CompletionImagePicker() {
   };
 
   let imagePreview = (
-    <Text style={styles.noImageText}>
-      Take an image upon completion of event
-    </Text>
+    <Image
+      style={styles.image}
+      source={{
+        uri: 'https://cdn.britannica.com/67/92867-050-BC3DC984/cameras-camera-reviews-crystal-displays-photographs-film.jpg',
+      }}
+    />
   );
 
   if (image) {
@@ -67,6 +70,7 @@ function CompletionImagePicker() {
       }}
     >
       <Text style={styles.title}>Steps to Complete Event</Text>
+      <Text>(Please take a photo of the event venue)</Text>
       <View style={styles.imagePreview}>{imagePreview}</View>
       <View style={styles.buttonsContainer}>
         <IconButton
@@ -96,12 +100,13 @@ export default CompletionImagePicker;
 
 const styles = StyleSheet.create({
   imagePreview: {
-    width: 250,
+    width: '100%',
     height: 200,
     marginVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'lightgray',
+    // backgroundColor: 'lightblue',
+    // opacity: 0.5,
     borderRadius: 4,
     overflow: 'hidden',
     padding: 8,
@@ -119,11 +124,12 @@ const styles = StyleSheet.create({
   },
   noImageText: {
     textAlign: 'center',
-    fontWeight: 'bold',
-    color: 'blue',
+    // fontWeight: 'bold',
+    color: 'black',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'limegreen',
   },
 });

@@ -14,8 +14,8 @@ import EmergencyScreen from "./src/screens/EmergencyScreen";
 import AssistanceScreen from "./src/screens/AssistanceScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import UpcomingEventScreen from "./src/screens/UpcomingEventScreen";
-import Event1DetailScreen from "./src/screens/eventDetails/Event1DetailScreen";
-import Event2DetailScreen from "./src/screens/eventDetails/Event2DetailScreen";
+import EventDetailScreen from "./src/screens/EventDetailScreen";
+import FullMap from "./src/screens/eventPageComponents/FullMap";
 
 // Context Provider
 import EventsContextProvider from "./Store/context/events-context";
@@ -35,9 +35,19 @@ function EventNavigator() {
       <EventStack.Screen
         name="Upcoming Events"
         component={UpcomingEventScreen}
+        options={{
+          title: 'Events',
+        }}
       />
-      <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} />
-      <EventStack.Screen name="Event2Detail" component={Event2DetailScreen} />
+      {/* <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} /> */}
+      <EventStack.Screen
+        name="EventDetail"
+        component={EventDetailScreen}
+        options={{
+          title: 'Event',
+        }}
+      />
+      <EventStack.Screen name="Map View" component={FullMap} />
     </EventStack.Navigator>
   );
 }
@@ -45,47 +55,45 @@ function EventNavigator() {
 // MainTabNavigator is a component for the bottom tab navigation.
 function MainTabNavigator() {
   return (
-    
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              if (route.name === "Home") {
-                iconName = focused ? "home" : "home-outline";
-              } else if (route.name === "Profile") {
-                iconName = focused ? "person" : "person-outline";
-              } else if (route.name === "Events") {
-                iconName = focused ? "calendar" : "calendar-outline";
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: "blue",
-            tabBarInactiveTintColor: "gray",
-          })}
-        >
-          <Tab.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Tab.Screen
-            name="Profile"
-            component={ProfileScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Tab.Screen
-            name="Events"
-            component={EventNavigator}
-            options={{
-              headerShown: false,
-            }}
-          />
-        </Tab.Navigator>
-      
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          if (route.name === 'Home') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'Events') {
+            iconName = focused ? 'calendar' : 'calendar-outline';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#1F75FE',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Events"
+        component={EventNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
@@ -112,9 +120,9 @@ function App() {
           <Drawer.Navigator
             initialRouteName="Main"
             screenOptions={{
-              headerTintColor: "blue",
-              drawerInactiveTintColor: "gray",
-              drawerActiveTintColor: "blue",
+              headerTintColor: '#1F75FE',
+              drawerInactiveTintColor: 'gray',
+              drawerActiveTintColor: '#1F75FE',
             }}
           >
             <Drawer.Screen

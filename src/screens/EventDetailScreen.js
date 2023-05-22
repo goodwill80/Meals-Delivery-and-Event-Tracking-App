@@ -1,16 +1,14 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import CompletionImagePicker from './CompletionImagePicker';
-import OutlinedButton from '../../Components/OutlineButton';
+import CompletionImagePicker from './eventPageComponents/CompletionImagePicker';
+import OutlinedButton from '../Components/OutlineButton';
+import LocationMap from './eventPageComponents/LocationMap';
 
-import LocationMap from './LocationMap';
-
-const Event2DetailScreen = () => {
+const EventDetailScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
         <View>
-          <Text style={styles.title}>Event 2</Text>
           <LocationMap />
           <CompletionImagePicker />
           <View style={styles.completionBtn}>
@@ -22,7 +20,7 @@ const Event2DetailScreen = () => {
   );
 };
 
-export default Event2DetailScreen;
+export default EventDetailScreen;
 
 const styles = StyleSheet.create({
   container: {

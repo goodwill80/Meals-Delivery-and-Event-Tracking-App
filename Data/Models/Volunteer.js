@@ -3,7 +3,7 @@ export class scheduledEvent {
     this.event = event;
     this.addresses = [];
     this.completed = false;
-    this.imageUrls = [];
+    this.imageUrls = '';
     this.remarks = '';
   }
 }
