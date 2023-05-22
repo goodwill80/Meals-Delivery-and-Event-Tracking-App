@@ -1,7 +1,21 @@
-import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  FlatList,
+  Pressable,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { volunteers } from '../../Data/Dummy_data';
 
 function UpcomingEventScreen({ navigation }) {
+  const navigate = useNavigation();
+  const volunteer = volunteers[0];
+
+  const events = volunteer.scheduledEvents;
+
   return (
     <View style={styles.container}>
       {/* <Text style={styles.headerTitle}>Upcoming Events!</Text> */}
@@ -9,40 +23,62 @@ function UpcomingEventScreen({ navigation }) {
         title="Event 1"
         onPress={() => navigation.navigate('EventDetail')}
       />
-      <View style={styles.eventContainer}>
-        <View style={styles.eventDateContainer}>
-          <Text style={styles.eventDateText}>Elderly Care</Text>
-          <Text style={styles.eventDateText}>15-Jan-2023</Text>
-        </View>
-        <View style={styles.eventDetailContainer}>
-          <View style={styles.imageContainer}>
-            <Image
-              style={styles.imageDetails}
-              source={{
-                uri: 'https://www.homage.sg/wp-content/uploads/2018/08/rsz_11day-care-centre-final-image-min-844x562.png',
-              }}
-            />
-          </View>
-          <View style={styles.detailsContainer}>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 'bold',
-                color: '#2a52be',
-                paddingBottom: 4,
-              }}
+
+      <FlatList
+        data={events}
+        renderItem={(event) => {
+          return (
+            <Pressable
+              onPress={() => navigate.navigate('EventDetail', event.item)}
             >
-              Time: 0900hrs - 1200hrs
-            </Text>
-            <Text style={{ fontSize: 16, fontWeight: 'bold', paddingTop: 4 }}>
-              Description:{' '}
-            </Text>
-            <Text style={{ fontSize: 16 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Text>
-          </View>
-        </View>
-      </View>
+              <View style={styles.eventContainer}>
+                <View style={styles.eventDateContainer}>
+                  <Text style={styles.eventDateText}>
+                    {event.item.event.name}
+                  </Text>
+                  <Text style={styles.eventDateText}>
+                    {event.item.event.date}
+                  </Text>
+                </View>
+                <View style={styles.eventDetailContainer}>
+                  <View style={styles.imageContainer}>
+                    <Image
+                      style={styles.imageDetails}
+                      source={{
+                        uri: `${event.item.event.imageUrl}`,
+                      }}
+                    />
+                  </View>
+                  <View style={styles.detailsContainer}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        color: '#2a52be',
+                        paddingBottom: 4,
+                      }}
+                    >
+                      {event.item.event.timeSlot}
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        paddingTop: 4,
+                      }}
+                    >
+                      Description:{' '}
+                    </Text>
+                    <Text style={{ fontSize: 16 }}>
+                      {event.item.event.description}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </Pressable>
+          );
+        }}
+      />
     </View>
   );
 }
@@ -66,6 +102,7 @@ const styles = StyleSheet.create({
     shadowColor: 'gray',
     shadowOpacity: 0.5,
     height: 150,
+    marginBottom: 16,
   },
   eventDateContainer: {
     padding: 4,
