@@ -1,3 +1,4 @@
+// export const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 export const GOOGLE_API_KEY = 'AIzaSyCqbLORz6QTx8CrwxoDAkHRjhk6zg07qSM';
 
 export const getMapPreview = (lat, lng) => {
