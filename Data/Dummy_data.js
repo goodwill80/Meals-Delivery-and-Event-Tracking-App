@@ -112,10 +112,48 @@ volunteers[0].scheduledEvents.push(
 
 // Meals-on-wheel locations
 volunteers[0].scheduledEvents[4].addresses.push(
-  '162 Bukit Merah Central #05-3545 Singapore 150162',
-  '5 Jurong West Street 74 Singapore 649151',
-  '4 Changi Business Park Ave 1 Singapore 486016',
-  '668, woodlands ring road #01-05 Singapore 947576'
+  {
+    id: 1,
+    address: '162 Bukit Merah Central #05-3545 Singapore 150162',
+    bene: 'Mdm Tan',
+    meal: 'non-muslim',
+    completed: false,
+  },
+  {
+    id: 2,
+    address: '5 Jurong West Street 74 Singapore 649151',
+    bene: 'Mr Kumar',
+    meal: 'vegetarian',
+    completed: false,
+  },
+  {
+    id: 3,
+    address: '4 Changi Business Park Ave 1 Singapore 486016',
+    bene: 'Mr Ang',
+    meal: 'non-muslim',
+    completed: false,
+  },
+  {
+    id: 4,
+    address: '668, woodlands ring road #01-05 Singapore 947576',
+    bene: 'Mr Ali',
+    meal: 'muslim',
+    completed: false,
+  },
+  {
+    id: 5,
+    address: '23, Canberra Drive #10-98 Singapore 123456',
+    bene: 'Mdm Fatimah',
+    meal: 'muslim',
+    completed: false,
+  },
+  {
+    id: 6,
+    address: '21, Pasir Ris street 32, Singapore 1322343',
+    bene: 'Mdm Ang',
+    meal: 'non-muslim',
+    completed: false,
+  }
 );
 
 events[0].volunteersEnrolled.push(volunteers[0]);

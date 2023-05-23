@@ -20,6 +20,7 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import UpcomingEventScreen from './src/screens/UpcomingEventScreen';
 import EventDetailScreen from './src/screens/EventDetailScreen';
 import FullMap from './src/screens/eventPageComponents/FullMap';
+import MealLocationsScreen from './src/screens/MealLocationsScreen';
 
 // Context Provider
 import EventsContextProvider from './Store/context/events-context';
@@ -51,6 +52,13 @@ function EventNavigator() {
         }}
       />
       <EventStack.Screen name="Map View" component={FullMap} />
+      <EventStack.Screen
+        name="Deliver Locations"
+        component={MealLocationsScreen}
+        options={{
+          title: 'Meal Delivery Locations',
+        }}
+      />
     </EventStack.Navigator>
   );
 }
