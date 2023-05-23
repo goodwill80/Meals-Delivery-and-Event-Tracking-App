@@ -7,6 +7,7 @@ const EventsContext = createContext({
   emergencies: [],
   completeEvent: (volunteerId, eventId, imageUrl, remarks) => {},
   setEmergencies: (volunteer, event, remarks) => {},
+  getVolunteerById: (id) => {},
 });
 
 function EventsContextProvider({ children }) {
@@ -14,7 +15,12 @@ function EventsContextProvider({ children }) {
   const [allEvents, setAllEvents] = useState(events);
   const [allEmergencies, setAllEmergencies] = useState(emergencies);
 
-  const completedEvent = (volunteerId, eventId, imageUrl, remarks) => {
+  const getVolunteerById = (id) => {
+    const volunteer = allVolunteers.find((volunteer) => volunteer.id === id);
+    if (volunteer) return volunteer;
+  };
+
+  const completeEvent = (volunteerId, eventId, imageUrl, remarks) => {
     const volunteer = allVolunteers.find(
       (volunteer) => volunteer.id === volunteerId
     );
@@ -44,8 +50,9 @@ function EventsContextProvider({ children }) {
     allVolunteers: allVolunteers,
     allEvents: allEvents,
     allEmergencies: allEmergencies,
-    completeEvent: completedEvent,
+    completeEvent: completeEvent,
     setEmergencies: setEmergencies,
+    getVolunteerById: getVolunteerById,
   };
 
   return (

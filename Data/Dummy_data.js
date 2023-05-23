@@ -6,28 +6,28 @@ import { scheduledEvent } from './Models/Volunteer';
 //  Volunteers
 export const volunteers = [
   new Volunteer(
-    Math.round(Math.random() * 1000).toString(),
+    1,
     'Jon',
     'https://mountstudio.com.sg/wp-content/uploads/Corporate-Portrait-Headshot.jpg',
     'jon@gmail.com',
     '983748576'
   ),
   new Volunteer(
-    Math.round(Math.random() * 1000).toString(),
+    2,
     'Ace',
     'https://www.bespokephotography.sg/wp-content/uploads/DSC09042-2-683x1024.jpg',
     'ace@gmail.com',
     '9478576843'
   ),
   new Volunteer(
-    Math.round(Math.random() * 1000).toString(),
+    3,
     'Claire',
     'https://www.shutterturf.com/wp-content/uploads/2021/02/Boban-James-5.jpeg',
     'claire@gmail.com',
     '904578345'
   ),
   new Volunteer(
-    Math.round(Math.random() * 1000).toString(),
+    4,
     'Ying Wang',
     'https://ohdearstudio.com.sg/wp-content/uploads/2023/03/SINGAPORE-Black-And-White-Professional-Headshots-732x1024.jpg',
     'yw@gmail.com',
@@ -103,11 +103,11 @@ export const emergencies = [];
 
 // Enroll volunteer at index 0 in Events
 volunteers[0].scheduledEvents.push(
-  new scheduledEvent(events[0]),
-  new scheduledEvent(events[1]),
-  new scheduledEvent(events[2]),
-  new scheduledEvent(events[3]),
-  new scheduledEvent(events[4])
+  new scheduledEvent(events[0], false),
+  new scheduledEvent(events[1], false),
+  new scheduledEvent(events[2], false),
+  new scheduledEvent(events[3], false),
+  new scheduledEvent(events[4], false)
 );
 
 // Meals-on-wheel locations

@@ -1,8 +1,8 @@
 export class scheduledEvent {
-  constructor(event) {
+  constructor(event, completed) {
     this.event = event;
     this.addresses = [];
-    this.completed = false;
+    this.completed = completed;
     this.imageUrls = '';
     this.remarks = '';
   }

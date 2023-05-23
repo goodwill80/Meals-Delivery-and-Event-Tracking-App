@@ -145,7 +145,10 @@ function LocationMap({ address }) {
         </View>
       </View>
 
-      <Pressable onPress={openFullMap}>
+      <Pressable
+        onPress={openFullMap}
+        style={({ pressed }) => [pressed && styles.pressed]}
+      >
         <View style={styles.mapPreview}>{locationPreview}</View>
       </Pressable>
       <View styles={styles.actions}>
@@ -194,6 +197,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#3457D5',
   },
   radioContainer: {
     flexDirection: 'row',
@@ -221,5 +225,8 @@ const styles = StyleSheet.create({
     height: 15,
     backgroundColor: '#1F75FE',
     borderRadius: 10,
+  },
+  pressed: {
+    opacity: 0.7,
   },
 });
