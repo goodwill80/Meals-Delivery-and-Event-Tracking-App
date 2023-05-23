@@ -104,7 +104,6 @@ function App() {
   const theme = useContext(themeContext);
   const [darkMode, setDarkMode] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [showAdminScreen, setShowAdminScreen] = useState(false); // Add state to control the display of AdminScreen
 
   useEffect(() => {
     const listener = EventRegister.addEventListener("changeTheme", (data) => {
@@ -125,21 +124,9 @@ function App() {
             component={() => (
               <LoginScreen
                 setLoggedIn={setLoggedIn}
-                setShowAdminScreen={setShowAdminScreen}
               />
-            )} // Pass setShowAdminScreen to LoginScreen
+            )}
           />
-          {showAdminScreen && (
-            <Stack.Screen
-              name="AdminLogin"
-              component={() => (
-                <AdminScreen
-                  setLoggedIn={setLoggedIn}
-                  setShowAdminScreen={setShowAdminScreen}
-                /> // Pass setShowAdminScreen to AdminScreen
-              )}
-            />
-          )}
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -228,16 +215,6 @@ function App() {
               <Drawer.Screen
                 name=" "
                 component={EmergencyScreen}
-                // options={{
-                //   title: "EmergencyReport",
-                //   drawerIcon: ({ color, size }) => (
-                //     <Ionicons
-                //       name="warning-outline"
-                //       color={color}
-                //       size={size}
-                //     />
-                //   ),
-                // }}
               />
             </Drawer.Navigator>
           </SafeAreaView>
@@ -255,6 +232,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
-
-
-
