@@ -26,6 +26,7 @@ function UpcomingEventScreen({ navigation }) {
 
       <FlatList
         data={events}
+        showsVerticalScrollIndicator={false}
         renderItem={(event) => {
           return (
             <Pressable

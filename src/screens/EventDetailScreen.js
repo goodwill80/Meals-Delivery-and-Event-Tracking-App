@@ -12,7 +12,8 @@ const EventDetailScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.maintitle}>{event.event.name}</Text>
-      <ScrollView>
+      <Text style={styles.subText}>{event.event.place}</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           <LocationMap address={event.event.place} />
           <CompletionImagePicker />
@@ -38,6 +39,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     color: '#1F75FE',
     fontWeight: 'bold',
+  },
+  subText:{
+    marginBottom: 10,
+    textAlign: 'center',
   },
   title: {
     fontWeight: 'bold',

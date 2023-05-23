@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { NavigationContainer, DarkTheme, DefaultTheme } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DarkTheme,
+  DefaultTheme,
+} from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
-import { EventRegister } from 'react-native-event-listeners';
+import { EventRegister } from "react-native-event-listeners";
 
 import HomeScreen from "./src/screens/HomeScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import AboutScreen from "./src/screens/AboutScreen";
-import EmergencyScreen from "./src/screens/EmergencyScreen";
-import AssistanceScreen from "./src/screens/AssistanceScreen";
+import AppSupportScreen from "./src/screens/AppSupportScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import UpcomingEventScreen from "./src/screens/UpcomingEventScreen";
 import EventDetailScreen from "./src/screens/EventDetailScreen";
@@ -35,7 +38,7 @@ function EventNavigator() {
         name="Upcoming Events"
         component={UpcomingEventScreen}
         options={{
-          title: 'Events',
+          title: "Events",
         }}
       />
       {/* <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} /> */}
@@ -43,7 +46,7 @@ function EventNavigator() {
         name="EventDetail"
         component={EventDetailScreen}
         options={{
-          title: 'Event',
+          title: "Event",
         }}
       />
       <EventStack.Screen name="Map View" component={FullMap} />
@@ -58,17 +61,17 @@ function MainTabNavigator() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
-          } else if (route.name === 'Events') {
-            iconName = focused ? 'calendar' : 'calendar-outline';
+          if (route.name === "Home") {
+            iconName = focused ? "home" : "home-outline";
+          } else if (route.name === "Profile") {
+            iconName = focused ? "person" : "person-outline";
+          } else if (route.name === "Events") {
+            iconName = focused ? "calendar" : "calendar-outline";
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#1F75FE',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: "#1F75FE",
+        tabBarInactiveTintColor: "gray",
       })}
     >
       <Tab.Screen
@@ -97,8 +100,7 @@ function MainTabNavigator() {
 }
 
 function App() {
-
-  const theme = useContext(themeContext)
+  const theme = useContext(themeContext);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -113,75 +115,74 @@ function App() {
 
   return (
     <EventsContextProvider>
-      <themeContext.Provider value={darkMode === true ? theme.dark : theme.light}>
-      <NavigationContainer theme={darkMode === true ? DarkTheme : DefaultTheme}>
-        <SafeAreaView style={[styles.container, {backgroundColor:theme.backgroundColor}]}>
-          <Drawer.Navigator
-            initialRouteName="Main"
-            screenOptions={{
-              headerTintColor: '#1F75FE',
-              drawerInactiveTintColor: 'gray',
-              drawerActiveTintColor: '#1F75FE',
-            }}
+      <themeContext.Provider
+        value={darkMode === true ? theme.dark : theme.light}
+      >
+        <NavigationContainer
+          theme={darkMode === true ? DarkTheme : DefaultTheme}
+        >
+          <SafeAreaView
+            style={[
+              styles.container,
+              { backgroundColor: theme.backgroundColor },
+            ]}
           >
-            <Drawer.Screen
-              name="Main"
-              component={MainTabNavigator}
-              options={{
-                title: "Main",
-                drawerIcon: ({ color, size }) => (
-                  <Ionicons name="home" color={color} size={size} />
-                ),
+            <Drawer.Navigator
+              initialRouteName="Main"
+              screenOptions={{
+                headerTintColor: "#1F75FE",
+                drawerInactiveTintColor: "gray",
+                drawerActiveTintColor: "#1F75FE",
               }}
-            />
-            <Drawer.Screen
-              name="About"
-              component={AboutScreen}
-              options={{
-                title: "About us",
-                drawerIcon: ({ color, size }) => (
-                  <Ionicons name="people" color={color} size={size} />
-                ),
-              }}
-            />
-            <Drawer.Screen
-              name="Emergency"
-              component={EmergencyScreen}
-              options={{
-                title: "Emergency",
-                drawerIcon: ({ color, size }) => (
-                  <Ionicons name="medkit-sharp" color={color} size={size} />
-                ),
-              }}
-            />
-            <Drawer.Screen
-              name="Assistance"
-              component={AssistanceScreen}
-              options={{
-                title: "Assistance",
-                drawerIcon: ({ color, size }) => (
-                  <Ionicons
-                    name="chatbubble-ellipses-sharp"
-                    color={color}
-                    size={size}
-                  />
-                ),
-              }}
-            />
-            <Drawer.Screen
-              name="Settings"
-              component={SettingsScreen}
-              options={{
-                title: "Settings",
-                drawerIcon: ({ color, size }) => (
-                  <Ionicons name="md-apps-sharp" color={color} size={size} />
-                ),
-              }}
-            />
-          </Drawer.Navigator>
-        </SafeAreaView>
-      </NavigationContainer>
-    </themeContext.Provider>
+            >
+              <Drawer.Screen
+                name="Main"
+                component={MainTabNavigator}
+                options={{
+                  title: "Main",
+                  drawerIcon: ({ color, size }) => (
+                    <Ionicons name="home" color={color} size={size} />
+                  ),
+                }}
+              />
+              <Drawer.Screen
+                name="About"
+                component={AboutScreen}
+                options={{
+                  title: "About us",
+                  drawerIcon: ({ color, size }) => (
+                    <Ionicons name="people" color={color} size={size} />
+                  ),
+                }}
+              />
+              <Drawer.Screen
+                name="AppSupport"
+                component={AppSupportScreen}
+                options={{
+                  title: "App Support",
+                  drawerIcon: ({ color, size }) => (
+                    <Ionicons
+                      name="chatbubble-ellipses-sharp"
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
+              />
+              <Drawer.Screen
+                name="Settings"
+                component={SettingsScreen}
+                options={{
+                  title: "Settings",
+                  drawerIcon: ({ color, size }) => (
+                    <Ionicons name="md-apps-sharp" color={color} size={size} />
+                  ),
+                }}
+              />
+            </Drawer.Navigator>
+          </SafeAreaView>
+        </NavigationContainer>
+      </themeContext.Provider>
     </EventsContextProvider>
   );
 }
