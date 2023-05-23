@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Alert, Text, StyleSheet } from "react-native";
+import { View, TextInput, Alert, Text, StyleSheet, Keyboard, TouchableWithoutFeedback } from "react-native";
 import validator from "validator";
 import OutlinedButton from "../Components/OutlineButton";
 
@@ -9,6 +9,8 @@ function AppSupportScreen() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = () => {
+    Keyboard.dismiss();
+
     if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
       Alert.alert("Incomplete Form", "Please fill in all the fields");
       return;
@@ -28,49 +30,55 @@ function AppSupportScreen() {
     setMessage("");
   };
 
+  const handleContainerPress = () => {
+    Keyboard.dismiss();
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.headerText}>We're here to help!</Text>
-      <Text style={styles.subText}>
-        If you're having problems with our app, please fill out the form below.
-      </Text>
-      <Text style={styles.subText}>
-        Your feedback will help us improve the app for everyone.
-      </Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your name"
-          placeholderTextColor="#888"
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
+    <TouchableWithoutFeedback onPress={handleContainerPress}>
+      <View style={styles.container}>
+        <Text style={styles.headerText}>We're here to help!</Text>
+        <Text style={styles.subText}>
+          If you're having problems with our app, please fill out the form below.
+        </Text>
+        <Text style={styles.subText}>
+          Your feedback will help us improve the app for everyone.
+        </Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your name"
+            placeholderTextColor="#888"
+            value={name}
+            onChangeText={(text) => setName(text)}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your email"
+            placeholderTextColor="#888"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={[styles.input, styles.messageInput]}
+            placeholder="Enter your message"
+            placeholderTextColor="#888"
+            value={message}
+            onChangeText={(text) => setMessage(text)}
+            multiline
+          />
+        </View>
+        <View style={styles.completionBtn}>
+          <OutlinedButton onPress={handleSubmit} color="#1F75FE">
+            Submit
+          </OutlinedButton>
+        </View>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          placeholderTextColor="#888"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={[styles.input, styles.messageInput]}
-          placeholder="Enter your message"
-          placeholderTextColor="#888"
-          value={message}
-          onChangeText={(text) => setMessage(text)}
-          multiline
-        />
-      </View>
-      <View style={styles.completionBtn}>
-        <OutlinedButton onPress={handleSubmit} color="#1F75FE">
-          Submit
-        </OutlinedButton>
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
