@@ -1,52 +1,58 @@
+import { useLayoutEffect, useState } from 'react';
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   Image,
   FlatList,
   Pressable,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { volunteers } from '../../Data/Dummy_data';
+import { useGlobalEventsContext } from '../../Store/context/events-context';
 
 function UpcomingEventScreen({ navigation }) {
+  const { getVolunteerById, completeEvent } = useGlobalEventsContext();
+  const [events, setEvents] = useState(null);
   const navigate = useNavigation();
-  const volunteer = volunteers[0];
 
-  const events = volunteer.scheduledEvents;
+  useLayoutEffect(() => {
+    if (getVolunteerById(1)) {
+      const volunteer = getVolunteerById(1);
+      const eventsOutstanding = volunteer?.scheduledEvents.filter(
+        (evt) => !evt.completed
+      );
+      setEvents(eventsOutstanding);
+    }
+  }, [completeEvent]);
 
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.headerTitle}>Upcoming Events!</Text> */}
-      {/* <Button
-        title="Event 1"
-        onPress={() => navigation.navigate('EventDetail')}
-      /> */}
-
       <FlatList
         data={events}
         showsVerticalScrollIndicator={false}
         renderItem={(event) => {
+          const singleEvent = event.item?.event;
           return (
             <Pressable
-              onPress={() => navigate.navigate('EventDetail', event.item)}
+              onPress={() =>
+                navigate.navigate('EventDetail', {
+                  ...singleEvent,
+                  volunteerId: 1,
+                })
+              }
+              style={({ pressed }) => [pressed && styles.pressed]}
             >
               <View style={styles.eventContainer}>
                 <View style={styles.eventDateContainer}>
-                  <Text style={styles.eventDateText}>
-                    {event.item.event.name}
-                  </Text>
-                  <Text style={styles.eventDateText}>
-                    {event.item.event.date}
-                  </Text>
+                  <Text style={styles.eventDateText}>{singleEvent?.name}</Text>
+                  <Text style={styles.eventDateText}>{singleEvent?.date}</Text>
                 </View>
                 <View style={styles.eventDetailContainer}>
                   <View style={styles.imageContainer}>
                     <Image
                       style={styles.imageDetails}
                       source={{
-                        uri: `${event.item.event.imageUrl}`,
+                        uri: `${singleEvent?.imageUrl}`,
                       }}
                     />
                   </View>
@@ -59,7 +65,7 @@ function UpcomingEventScreen({ navigation }) {
                         paddingBottom: 4,
                       }}
                     >
-                      {event.item.event.timeSlot}
+                      {singleEvent?.timeSlot}
                     </Text>
                     <Text
                       style={{
@@ -71,7 +77,7 @@ function UpcomingEventScreen({ navigation }) {
                       Description:{' '}
                     </Text>
                     <Text style={{ fontSize: 16 }}>
-                      {event.item.event.description}
+                      {singleEvent?.description}
                     </Text>
                   </View>
                 </View>
@@ -79,6 +85,7 @@ function UpcomingEventScreen({ navigation }) {
             </Pressable>
           );
         }}
+        keyExtractor={(item) => item.event?.id}
       />
     </View>
   );
@@ -138,5 +145,8 @@ const styles = StyleSheet.create({
   detailsContainer: {
     width: '70%',
     paddingVertical: 10,
+  },
+  pressed: {
+    opacity: 0.6,
   },
 });

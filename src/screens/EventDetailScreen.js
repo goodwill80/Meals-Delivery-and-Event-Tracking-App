@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import CompletionImagePicker from './eventPageComponents/CompletionImagePicker';
-import OutlinedButton from '../Components/OutlineButton';
-import LocationMap from './eventPageComponents/LocationMap';
+import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+
+// Child Components
+import EventInstructions from './eventPageComponents/EventInstructions';
+import LocationMap from './eventPageComponents/LocationMap';
+import CompletionImagePicker from './eventPageComponents/CompletionImagePicker';
 
 const EventDetailScreen = () => {
   const route = useRoute();
@@ -11,15 +13,15 @@ const EventDetailScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.maintitle}>{event.event.name}</Text>
-      <Text style={styles.subText}>{event.event.place}</Text>
+      <Text style={styles.maintitle}>{event.name}</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
-          <LocationMap address={event.event.place} />
-          <CompletionImagePicker />
-          <View style={styles.completionBtn}>
-            <OutlinedButton>Click to Complete Event</OutlinedButton>
-          </View>
+          <EventInstructions event={event} />
+          <LocationMap address={event.place} />
+          <CompletionImagePicker
+            event={event}
+            volunteerId={event.volunteerId}
+          />
         </View>
       </ScrollView>
     </View>
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     color: '#1F75FE',
     fontWeight: 'bold',
   },
-  subText:{
+  subText: {
     marginBottom: 10,
     textAlign: 'center',
   },
@@ -49,8 +51,5 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     color: 'blue',
     textAlign: 'center',
-  },
-  completionBtn: {
-    marginTop: 20,
   },
 });

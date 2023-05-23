@@ -1,10 +1,34 @@
 import React, { useState } from 'react';
-import { Image, View, Platform, Text, StyleSheet } from 'react-native';
+import { useGlobalEventsContext } from '../../../Store/context/events-context';
+import {
+  Image,
+  View,
+  Platform,
+  Text,
+  StyleSheet,
+  Button,
+  TextInput,
+} from 'react-native';
 import IconButton from '../../Components/IconButton';
 import * as ExpoImagePicker from 'expo-image-picker';
+import { useNavigation } from '@react-navigation/native';
 
-function CompletionImagePicker() {
+function CompletionImagePicker({ event, volunteerId }) {
+  const navigation = useNavigation();
+  const { completeEvent } = useGlobalEventsContext();
   const [image, setImage] = useState(null);
+  const [remarks, setRemarks] = useState('');
+
+  // OnChange for InputText
+  const handleChangeRemarksText = (e) => {
+    setRemarks(e);
+  };
+
+  // Submit handler for completion
+  const submitCompletionOfEvent = () => {
+    completeEvent(volunteerId, event.id, image ? image : '', remarks);
+    navigation.navigate('Upcoming Events');
+  };
 
   const captureImage = async () => {
     // Make sure platform is not "web" before requesting camera permissions
@@ -92,6 +116,23 @@ function CompletionImagePicker() {
           onPress={() => setImage(null)}
         />
       </View>
+      <View style={styles.remarksContainer}>
+        <TextInput
+          value={remarks}
+          onChangeText={handleChangeRemarksText}
+          placeholder="Help us to improve by providing your comments, if any."
+          style={styles.remarksInput}
+          multiline={true}
+          numberOfLines={4}
+        />
+      </View>
+      <View style={styles.completionBtn}>
+        <Button
+          onPress={submitCompletionOfEvent}
+          title="Complete event"
+          color={'white'}
+        />
+      </View>
     </View>
   );
 }
@@ -105,8 +146,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'lightblue',
-    // opacity: 0.5,
     borderRadius: 4,
     overflow: 'hidden',
     padding: 8,
@@ -114,6 +153,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+    opacity: 0.8,
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -124,12 +164,33 @@ const styles = StyleSheet.create({
   },
   noImageText: {
     textAlign: 'center',
-    // fontWeight: 'bold',
     color: 'black',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'limegreen',
+  },
+  remarksContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
+    width: '100%',
+  },
+  remarksInput: {
+    padding: 12,
+    borderWidth: 1,
+    borderColor: 'blue',
+    borderRadius: 10,
+    width: '100%',
+    height: 60,
+  },
+  completionBtn: {
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: '#2a52be',
+    borderRadius: 10,
+    backgroundColor: '#2a52be',
+    width: '100%',
   },
 });
