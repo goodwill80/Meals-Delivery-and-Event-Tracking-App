@@ -6,7 +6,7 @@ export class scheduledEvent {
     this.imageUrls = '';
     this.remarks = '';
   }
-}
+} 
 
 class Volunteer {
   constructor(id, name, imageUrl, email, phone) {
