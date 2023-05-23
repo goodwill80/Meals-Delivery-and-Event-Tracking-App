@@ -1,17 +1,26 @@
-import React, { useState } from "react";
-import { View, TextInput, Alert, Text, StyleSheet, Keyboard, TouchableWithoutFeedback } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  TextInput,
+  Alert,
+  Text,
+  StyleSheet,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import validator from "validator";
 import OutlinedButton from "../Components/OutlineButton";
+import { useNavigation } from "@react-navigation/native";
 
 function AdminScreen() {
-  //const [name, setName] = useState("");
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [passwd, setPasswd] = useState("");
 
   const handleSubmit = () => {
     Keyboard.dismiss();
 
-    if (email.trim() === "" || passwd.trim() === "" ) {
+    if (email.trim() === "" || passwd.trim() === "") {
       Alert.alert("Incomplete Form", "Please input both email and password.");
       return;
     }
@@ -21,12 +30,17 @@ function AdminScreen() {
       return;
     }
 
-    Alert.alert(
-      "Logged in.",
-      `User: ${email}\nWelcome!`
-    );
+    if (passwd.length !== 8) {
+      Alert.alert("Invalid Password", "Password must be 8 characters long");
+      return;
+    }
+
+    Alert.alert("Logged in.", `User: ${email}\nWelcome!`);
     setEmail("");
     setPasswd("");
+
+    // After successful login, navigate to the Emergency Screen
+    navigation.navigate(" ");
   };
 
   const handleContainerPress = () => {
@@ -35,15 +49,13 @@ function AdminScreen() {
 
   return (
     <TouchableWithoutFeedback onPress={handleContainerPress}>
-      <View style={styles.container}>
+      <View style={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={styles.headerText}>Administrator Login</Text>
-        <Text style={styles.subText}>
-          For staff only.
-        </Text>
+        <Text style={styles.subText}>For staff only.</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="email"
+            placeholder="Email"
             placeholderTextColor="#888"
             value={email}
             onChangeText={(text) => setEmail(text)}
@@ -52,10 +64,11 @@ function AdminScreen() {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="password"
+            placeholder="Password"
             placeholderTextColor="#888"
             value={passwd}
             onChangeText={(text) => setPasswd(text)}
+            secureTextEntry={true}
           />
         </View>
         <View style={styles.completionBtn}>

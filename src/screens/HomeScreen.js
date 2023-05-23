@@ -4,7 +4,7 @@ import theme from "../theme/theme";
 
 function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
         <Image
           source={require("../image/volunteer.jpg")}

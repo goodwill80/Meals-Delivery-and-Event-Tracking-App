@@ -3,23 +3,22 @@ import {
   View,
   TextInput,
   Alert,
-  Text,
   StyleSheet,
   Keyboard,
   TouchableWithoutFeedback,
+  Text,
 } from "react-native";
 import validator from "validator";
 import OutlinedButton from "../Components/OutlineButton";
 
-function AppSupportScreen() {
-  const [name, setName] = useState("");
+const LoginScreen = ({ setLoggedIn }) => {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
+  const handleLogin = () => {
     Keyboard.dismiss();
 
-    if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+    if (email.trim() === "" || password.trim() === "") {
       Alert.alert("Incomplete Form", "Please fill in all the fields");
       return;
     }
@@ -29,13 +28,15 @@ function AppSupportScreen() {
       return;
     }
 
-    Alert.alert(
-      "Form Submitted",
-      `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-    );
-    setName("");
-    setEmail("");
-    setMessage("");
+    if (password.length !== 8) {
+      Alert.alert("Invalid Password", "Password must be 8 characters long");
+      return;
+    }
+
+    Alert.alert("Logged in.", `User: ${email}\nWelcome!`);
+
+    setLoggedIn(true);
+    console.log("Login successful!");
   };
 
   const handleContainerPress = () => {
@@ -45,53 +46,37 @@ function AppSupportScreen() {
   return (
     <TouchableWithoutFeedback onPress={handleContainerPress}>
       <View style={styles.container} showsVerticalScrollIndicator={false}>
-        <Text style={styles.headerText}>We're here to help!</Text>
-        <Text style={styles.subText}>
-          If you're having problems with our app, please fill out the form
-          below.
-        </Text>
-        <Text style={styles.subText}>
-          Your feedback will help us improve the app for everyone.
-        </Text>
+        <Text style={styles.headerText}>User Login</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Enter your name"
-            placeholderTextColor="#888"
-            value={name}
-            onChangeText={(text) => setName(text)}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your email"
-            placeholderTextColor="#888"
+            placeholder="Email"
+            keyboardType="email-address"
+            autoCapitalize="none"
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
         </View>
         <View style={styles.inputContainer}>
           <TextInput
-            style={[styles.input, styles.messageInput]}
-            placeholder="Enter your message"
-            placeholderTextColor="#888"
-            value={message}
-            onChangeText={(text) => setMessage(text)}
-            multiline
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
           />
         </View>
         <View style={styles.completionBtn}>
-          <OutlinedButton onPress={handleSubmit} color="#1F75FE">
-            Submit
+          <OutlinedButton onPress={handleLogin} color="#1F75FE">
+            Login
           </OutlinedButton>
         </View>
       </View>
     </TouchableWithoutFeedback>
   );
-}
+};
 
-export default AppSupportScreen;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,13 +1,13 @@
-import React from 'react';
-import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
-import { useRoute } from '@react-navigation/native';
-import { useGlobalEventsContext } from '../../Store/context/events-context';
+import React from "react";
+import { View, Text, ScrollView, StyleSheet, Button } from "react-native";
+import { useRoute } from "@react-navigation/native";
+import { useGlobalEventsContext } from "../../Store/context/events-context";
 
 // Child Components
-import EventInstructions from './eventPageComponents/EventInstructions';
-import LocationMap from './eventPageComponents/LocationMap';
-import CompletionImagePicker from './eventPageComponents/CompletionImagePicker';
-import EmergencyAlert from './eventPageComponents/EmergencyAlert';
+import EventInstructions from "./eventPageComponents/EventInstructions";
+import LocationMap from "./eventPageComponents/LocationMap";
+import CompletionImagePicker from "./eventPageComponents/CompletionImagePicker";
+import EmergencyAlert from "./eventPageComponents/EmergencyAlert";
 
 const EventDetailScreen = () => {
   const { getVolunteerById } = useGlobalEventsContext();
@@ -16,7 +16,7 @@ const EventDetailScreen = () => {
   const volunteer = getVolunteerById(event.volunteerId);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} showsVerticalScrollIndicator={false}>
       <Text style={styles.maintitle}>{event.name}</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
@@ -42,19 +42,19 @@ const styles = StyleSheet.create({
   },
   maintitle: {
     fontSize: 30,
-    textAlign: 'center',
+    textAlign: "center",
     paddingVertical: 10,
-    color: '#1F75FE',
-    fontWeight: 'bold',
+    color: "#1F75FE",
+    fontWeight: "bold",
   },
   subText: {
     marginBottom: 10,
-    textAlign: 'center',
+    textAlign: "center",
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
-    color: 'blue',
-    textAlign: 'center',
+    color: "blue",
+    textAlign: "center",
   },
 });

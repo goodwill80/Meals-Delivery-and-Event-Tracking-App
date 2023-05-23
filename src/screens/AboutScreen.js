@@ -1,17 +1,17 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 
 function AboutScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require('../image/seniors.jpg')}
+          source={require("../image/seniors.jpg")}
           style={styles.image}
           resizeMode="contain"
         />
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.headerText}>Who We Are</Text>
         <Text style={styles.subText}>
           We are a non-profit voluntary welfare organisation established in
@@ -43,17 +43,17 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 28,
-    textAlign: 'center',
-    color: '#1F75FE',
-    fontWeight: 'bold',
+    textAlign: "center",
+    color: "#1F75FE",
+    fontWeight: "bold",
   },
   subText: {
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
     padding: 20,
   },
   imageContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   image: {
     width: 500,
