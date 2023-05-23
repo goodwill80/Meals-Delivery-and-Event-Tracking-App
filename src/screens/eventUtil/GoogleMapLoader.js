@@ -1,3 +1,5 @@
+// import { GOOGLE_API_KEY } from 'react-native-dotenv';
+
 // export const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 export const GOOGLE_API_KEY = 'AIzaSyCqbLORz6QTx8CrwxoDAkHRjhk6zg07qSM';
 

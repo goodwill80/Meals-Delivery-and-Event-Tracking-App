@@ -39,10 +39,10 @@ function EventsContextProvider({ children }) {
     setAllVolunteers(() => updatedVolunteers);
   };
 
-  const setEmergencies = (volunteer, event, remarks) => {
+  const setEmergencies = (volunteer, event, remarks, imageUrl) => {
     setAllEmergencies([
       ...allEmergencies,
-      new Emergency(volunteer, event, remarks),
+      new Emergency(volunteer, event, remarks, imageUrl),
     ]);
   };
 

@@ -102,18 +102,21 @@ function CompletionImagePicker({ event, volunteerId }) {
           icon="camera"
           color={'white'}
           onPress={captureImage}
+          bgColor="#0000FF"
         />
         <IconButton
           text="Upload"
           icon="md-briefcase-sharp"
           color={'white'}
           onPress={pickImage}
+          bgColor="#0000FF"
         />
         <IconButton
           text="Clear"
           icon="md-play-skip-back-circle-sharp"
           color={'white'}
           onPress={() => setImage(null)}
+          bgColor="#0000FF"
         />
       </View>
       <View style={styles.remarksContainer}>
