@@ -22,7 +22,7 @@ function AppSupportScreen() {
     }
 
     Alert.alert(
-      "Form Submitted Successfully",
+      "Form Submitted",
       `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     );
     setName("");

@@ -6,7 +6,7 @@ function AboutScreen() {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require("../image/hands.jpg")}
+          source={require("../image/seniors.jpg")}
           style={styles.image}
           resizeMode="contain"
         />
