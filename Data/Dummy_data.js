@@ -38,7 +38,7 @@ export const volunteers = [
 // Events
 export const events = [
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    1,
     'Befriended Service',
     'https://www.thebestsingapore.com/wp-content/uploads/2023/04/Best-Elderly-Care-Singapore-Review-720x408.jpg',
     '233, Ang Mo Kio Ave 2, #01-05, Singapore 123456',
@@ -50,7 +50,7 @@ export const events = [
     'Listen to stories and shared wisdoms'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    2,
     'School Care Service',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-2-1024x576.jpg',
     '123, Pasir Ris Ave 2, #01-02, Singapore 123456',
@@ -62,7 +62,7 @@ export const events = [
     'provide enrichments to afternoon primary school children'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    3,
     'Children Tuition',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-3-553x400.jpg',
     '123, Novena Road, #01-02, Singapore 123456',
@@ -74,7 +74,7 @@ export const events = [
     'Provide tuition to secondary school students'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    4,
     'Elderly Home Cleaning',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-2-1024x576.jpg',
     '123, Pasir Ris Ave 2, #01-02, Singapore 123456',
@@ -86,7 +86,7 @@ export const events = [
     'Home cleaning of elderly living alone'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    5,
     'Meals Delivery',
     'https://willinghearts.org.sg/wp-content/uploads/2014/04/wwhd-pic1.jpg',
     '123, Boon Ave 2, #01-02, Singapore 123456',
@@ -112,10 +112,48 @@ volunteers[0].scheduledEvents.push(
 
 // Meals-on-wheel locations
 volunteers[0].scheduledEvents[4].addresses.push(
-  '162 Bukit Merah Central #05-3545 Singapore 150162',
-  '5 Jurong West Street 74 Singapore 649151',
-  '4 Changi Business Park Ave 1 Singapore 486016',
-  '668, woodlands ring road #01-05 Singapore 947576'
+  {
+    id: 1,
+    address: '162 Bukit Merah Central #05-3545 Singapore 150162',
+    bene: 'Mdm Tan',
+    meal: 'non-muslim',
+    completed: false,
+  },
+  {
+    id: 2,
+    address: '5 Jurong West Street 74 Singapore 649151',
+    bene: 'Mr Kumar',
+    meal: 'vegetarian',
+    completed: false,
+  },
+  {
+    id: 3,
+    address: '4 Changi Business Park Ave 1 Singapore 486016',
+    bene: 'Mr Ang',
+    meal: 'non-muslim',
+    completed: false,
+  },
+  {
+    id: 4,
+    address: '668, woodlands ring road #01-05 Singapore 947576',
+    bene: 'Mr Ali',
+    meal: 'muslim',
+    completed: false,
+  },
+  {
+    id: 5,
+    address: '23, Canberra Drive #10-98 Singapore 123456',
+    bene: 'Mdm Fatimah',
+    meal: 'muslim',
+    completed: false,
+  },
+  {
+    id: 6,
+    address: '21, Pasir Ris street 32, Singapore 1322343',
+    bene: 'Mdm Ang',
+    meal: 'non-muslim',
+    completed: false,
+  }
 );
 
 events[0].volunteersEnrolled.push(volunteers[0]);
