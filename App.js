@@ -20,18 +20,22 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import UpcomingEventScreen from './src/screens/UpcomingEventScreen';
 import EventDetailScreen from './src/screens/EventDetailScreen';
 import FullMap from './src/screens/eventPageComponents/FullMap';
+import MealLocationsScreen from './src/screens/MealLocationsScreen';
+import MealDeliveryDetailsScreen from './src/screens/MealDeliveryDetailsScreen';
 
 // Context Provider
 import EventsContextProvider from './Store/context/events-context';
 import themeContext from './src/theme/themeContext';
+import LoginScreen from './src/screens/LoginScreen';
+import AdminScreen from './src/screens/AdminScreen';
+import EmergencyScreen from './src/screens/EmergencyScreen';
 import theme from './src/theme/theme';
 
-// Creating instances for tab and drawer navigators
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const EventStack = createStackNavigator();
 
-// EventNavigator is a component for the event stack navigation
 function EventNavigator() {
   return (
     <EventStack.Navigator>
@@ -42,7 +46,6 @@ function EventNavigator() {
           title: 'Events',
         }}
       />
-      {/* <EventStack.Screen name="Event1Detail" component={Event1DetailScreen} /> */}
       <EventStack.Screen
         name="EventDetail"
         component={EventDetailScreen}
@@ -51,11 +54,24 @@ function EventNavigator() {
         }}
       />
       <EventStack.Screen name="Map View" component={FullMap} />
+      <EventStack.Screen
+        name="Deliver Locations"
+        component={MealLocationsScreen}
+        options={{
+          title: 'Meal Delivery Locations',
+        }}
+      />
+      <EventStack.Screen
+        name="location details"
+        component={MealDeliveryDetailsScreen}
+        options={{
+          title: 'Location details',
+        }}
+      />
     </EventStack.Navigator>
   );
 }
 
-// MainTabNavigator is a component for the bottom tab navigation.
 function MainTabNavigator() {
   return (
     <Tab.Navigator
@@ -103,6 +119,7 @@ function MainTabNavigator() {
 function App() {
   const theme = useContext(themeContext);
   const [darkMode, setDarkMode] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const listener = EventRegister.addEventListener('changeTheme', (data) => {
@@ -113,6 +130,19 @@ function App() {
       EventRegister.removeEventListener(listener);
     };
   }, [darkMode]);
+
+  if (!loggedIn) {
+    return (
+      <NavigationContainer theme={darkMode === true ? DarkTheme : DefaultTheme}>
+        <Stack.Navigator initialRouteName="Login" headerMode="none">
+          <Stack.Screen
+            name="Login"
+            component={() => <LoginScreen setLoggedIn={setLoggedIn} />}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 
   return (
     <EventsContextProvider>
@@ -156,7 +186,6 @@ function App() {
                   ),
                 }}
               />
-
               <Drawer.Screen
                 name="AppSupport"
                 component={AppSupportScreen}
@@ -173,7 +202,7 @@ function App() {
               />
               <Drawer.Screen
                 name="Settings"
-                component={SettingsScreen}
+                component={() => <SettingsScreen setLoggedIn={setLoggedIn} />}
                 options={{
                   title: 'Settings',
                   drawerIcon: ({ color, size }) => (
@@ -181,6 +210,21 @@ function App() {
                   ),
                 }}
               />
+              <Drawer.Screen
+                name="Admin"
+                component={AdminScreen}
+                options={{
+                  title: 'Admin',
+                  drawerIcon: ({ color, size }) => (
+                    <Ionicons
+                      name="person-circle-outline"
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
+              />
+              <Drawer.Screen name=" " component={EmergencyScreen} />
             </Drawer.Navigator>
           </SafeAreaView>
         </NavigationContainer>

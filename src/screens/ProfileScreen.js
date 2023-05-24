@@ -1,7 +1,7 @@
-import { useLayoutEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
+import { useLayoutEffect, useState } from "react";
+import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 // import { volunteers } from '../../Data/Dummy_data';
-import { useGlobalEventsContext } from '../../Store/context/events-context';
+import { useGlobalEventsContext } from "../../Store/context/events-context";
 
 function ProfileScreen() {
   const { getVolunteerById } = useGlobalEventsContext();
@@ -15,7 +15,7 @@ function ProfileScreen() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} showsVerticalScrollIndicator={false}>
       <Text style={styles.header}>Welcome to your profile!</Text>
       <View style={styles.volunteerContainer}>
         <View style={styles.imageContainer}>
@@ -52,23 +52,23 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   header: {
     padding: 19,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 25,
   },
   volunteerContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: 45,
     paddingBottom: 50,
   },
   imageContainer: {
-    width: '30%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "30%",
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 4,
     paddingBottom: 20,
   },
@@ -78,14 +78,14 @@ const styles = StyleSheet.create({
     borderRadius: 50 / 2,
   },
   textContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   subheader: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   volunteerInfo: {
     fontSize: 20,
-    color: 'black',
+    color: "black",
   },
 });

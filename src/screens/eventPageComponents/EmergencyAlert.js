@@ -6,7 +6,7 @@ import * as ExpoImagePicker from 'expo-image-picker';
 import { emergencies } from '../../../Data/Dummy_data';
 
 function EmergencyAlert({ volunteer, event }) {
-  const { setEmergencies, Emergency } = useGlobalEventsContext();
+  const { setEmergencies } = useGlobalEventsContext();
   const [remarks, setRemarks] = useState(null);
   const [image, setImage] = useState(null);
 
@@ -22,10 +22,8 @@ function EmergencyAlert({ volunteer, event }) {
       alert('Please enter some remarks');
       return;
     } 
-    const emergency = new Emergency;
-    emergency = setEmergencies(volunteer, event, remarks, image);
+    setEmergencies(volunteer, event, remarks, image);
     alert('Thank you');
-    console.log(emergencies);
   };
 
   // *********** SDK Functions *********************
@@ -86,7 +84,7 @@ function EmergencyAlert({ volunteer, event }) {
         multiline={true}
         numberOfLines={4}
       />
-      <Text>{image ? "Chosen image: " + image : "No image chosen"}</Text>
+      <Text>{image ? "Image uploaded successfully" : "No image chosen"}</Text>
       <View style={styles.buttonsContainer}>
         <IconButton
           text="Camera"
@@ -131,6 +129,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginTop: 20,
     gap: 10,
+    marginTop: 20,
   },
   title: {
     textAlign: 'center',

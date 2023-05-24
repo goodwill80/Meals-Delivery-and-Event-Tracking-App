@@ -90,7 +90,7 @@ function CompletionImagePicker({ event, volunteerId }) {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 20,
+        marginTop: 30,
       }}
     >
       <Text style={styles.title}>Steps to Complete Event</Text>
@@ -170,9 +170,10 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'limegreen',
+    marginVertical: 12,
   },
   remarksContainer: {
     justifyContent: 'center',

@@ -13,6 +13,7 @@ import { useGlobalEventsContext } from '../../Store/context/events-context';
 function UpcomingEventScreen({ navigation }) {
   const { getVolunteerById, completeEvent } = useGlobalEventsContext();
   const [events, setEvents] = useState(null);
+  const [addresses, setAddresses] = useState(null);
   const navigate = useNavigation();
 
   useLayoutEffect(() => {
@@ -21,9 +22,13 @@ function UpcomingEventScreen({ navigation }) {
       const eventsOutstanding = volunteer?.scheduledEvents.filter(
         (evt) => !evt.completed
       );
+      const deliveries = eventsOutstanding.filter(
+        (event) => event.addresses.length !== 0
+      );
+      setAddresses(deliveries[0]?.addresses);
       setEvents(eventsOutstanding);
     }
-  }, [completeEvent]);
+  }, [completeEvent, useNavigation]);
 
   return (
     <View style={styles.container}>
@@ -35,10 +40,18 @@ function UpcomingEventScreen({ navigation }) {
           return (
             <Pressable
               onPress={() =>
-                navigate.navigate('EventDetail', {
-                  ...singleEvent,
-                  volunteerId: 1,
-                })
+                navigate.navigate(
+                  singleEvent.mealsOnWheels
+                    ? 'Deliver Locations'
+                    : 'EventDetail',
+                  {
+                    ...singleEvent,
+                    volunteerId: 1,
+                    eventId: event.item?.id,
+                    addresses: addresses,
+                    actualEventId: event.item?.event.id,
+                  }
+                )
               }
               style={({ pressed }) => [pressed && styles.pressed]}
             >
