@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Switch, StyleSheet } from "react-native";
+import { View, Switch, StyleSheet, Image, Text } from "react-native"; // Import the Text component
 import { EventRegister } from "react-native-event-listeners";
 import OutlinedButton from "../Components/OutlineButton";
 
@@ -13,6 +13,14 @@ function SettingsScreen({ setLoggedIn }) {
 
   return (
     <View style={styles.container} showsVerticalScrollIndicator={false}>
+      <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
+        <Image
+          source={require("../image/settings.jpg")}
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </View>
+      <Text style={styles.headerText}>Settings</Text>
       <Switch
         style={{ alignItems: "center", justifyContent: "center" }}
         value={darkMode}
@@ -35,9 +43,25 @@ export default SettingsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    
   },
   completionBtn: {
     marginTop: 20,
+    padding: 24,
+  },
+  imageContainer: {
+    alignItems: "center",
+  },
+  image: {
+    width: 440,
+    height: 320,
+  },
+  headerText: {
+    fontSize: 28,
+    textAlign: "center",
+    color: "#1F75FE",
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 20,
   },
 });
