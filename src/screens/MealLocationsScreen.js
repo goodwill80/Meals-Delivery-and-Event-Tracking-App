@@ -18,6 +18,7 @@ function MealLocationsScreen() {
     useGlobalEventsContext();
   const [locations, setLocations] = useState(null);
   const [remarks, setRemarks] = useState('');
+  const [program, setProgram] = useState();
   const route = useRoute();
   const volunteerId = route.params?.volunteerId;
   const eventId = route.params?.eventId;
@@ -32,6 +33,9 @@ function MealLocationsScreen() {
       const event = volunteer?.scheduledEvents.find((event) => {
         return event.addresses.length > 0;
       });
+      if (event) {
+        setProgram(event?.event);
+      }
       const pendingAddresses = event.addresses.filter(
         (address) => !address.completed
       );
@@ -82,7 +86,7 @@ function MealLocationsScreen() {
             <Text style={styles.collectionPointHeader}>
               Ration Collection Point:
             </Text>
-            <Text style={styles.collectionPointText}>{event.place}</Text>
+            <Text style={styles.collectionPointText}>{program?.place}</Text>
           </View>
           <Text style={styles.locationsHeaderText}>
             Scheduled Delivery Locations:
