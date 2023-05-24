@@ -3,15 +3,17 @@ import { View, StyleSheet, Text, TextInput, Button, Alert } from 'react-native';
 import IconButton from '../../Components/IconButton';
 import { useGlobalEventsContext } from '../../../Store/context/events-context';
 import * as ExpoImagePicker from 'expo-image-picker';
+import { emergencies } from '../../../Data/Dummy_data';
 
 function EmergencyAlert({ volunteer, event }) {
-  const { setEmergencies } = useGlobalEventsContext;
+  const { setEmergencies, Emergency } = useGlobalEventsContext();
   const [remarks, setRemarks] = useState(null);
   const [image, setImage] = useState(null);
 
   // OnChange for InputText
   const handleChangeRemarksText = (e) => {
     setRemarks(e);
+    console.log(remarks);
   };
 
   // Submit Concern Handler
@@ -20,8 +22,10 @@ function EmergencyAlert({ volunteer, event }) {
       alert('Please enter some remarks');
       return;
     } 
-    // setEmergencies(volunteer, event, remarks, image);
+    const emergency = new Emergency;
+    emergency = setEmergencies(volunteer, event, remarks, image);
     alert('Thank you');
+    console.log(emergencies);
   };
 
   // *********** SDK Functions *********************
@@ -48,7 +52,7 @@ function EmergencyAlert({ volunteer, event }) {
     if (!result.canceled) {
       setImage(result.assets[0].uri);
     }
-  };
+   };
 
   // Pick Image
   const pickImage = async () => {
@@ -67,20 +71,11 @@ function EmergencyAlert({ volunteer, event }) {
     }
   };
 
-  const imageName = () => {
-    if (image === null){
-      return <Text>No Image Uploaded</Text>
-    }
-    else {
-      return <Text>Image Uploaded Successfully</Text>
-    }
-  }
-
   return (
     <View style={styles.rootContainer}>
       <Text style={styles.title}>Report a concern</Text>
       <Text style={styles.text}>
-        highlight any concerns you may have during your shifts regarding the
+        Highlight any concerns you may have during your shift regarding the
         beneficiaries
       </Text>
       <TextInput
@@ -91,7 +86,7 @@ function EmergencyAlert({ volunteer, event }) {
         multiline={true}
         numberOfLines={4}
       />
-      <Text>{imageName}</Text>
+      <Text>{image ? "Chosen image: " + image : "No image chosen"}</Text>
       <View style={styles.buttonsContainer}>
         <IconButton
           text="Camera"

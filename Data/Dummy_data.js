@@ -39,7 +39,7 @@ export const volunteers = [
 export const events = [
   new Event(
     Math.round(Math.random() * 1000).toString(),
-    'Befriended Service',
+    'Befriender Service',
     'https://www.thebestsingapore.com/wp-content/uploads/2023/04/Best-Elderly-Care-Singapore-Review-720x408.jpg',
     '233, Ang Mo Kio Ave 2, #01-05, Singapore 123456',
     '2023-06-01',
@@ -51,25 +51,25 @@ export const events = [
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
-    'School Care Service',
+    'After School Care',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-2-1024x576.jpg',
     '123, Pasir Ris Ave 2, #01-02, Singapore 123456',
     '2023-06-03',
     '1300hrs to 1800hrs',
     '1230hrs',
-    'Please feel free to bring along any children story books.',
+    'Please feel free to bring along any children\'s story books.',
     false,
-    'provide enrichments to afternoon primary school children'
+    'Provide enrichment to primary school children'
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
-    'Children Tuition',
+    'Children\'s Tuition',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-3-553x400.jpg',
     '123, Novena Road, #01-02, Singapore 123456',
     '2023-06-10',
     '1300hrs to 1800hrs',
     '1230hrs',
-    'Please feel free to bring along any enrichment story books.',
+    'Please feel free to bring along any enrichment materials.',
     false,
     'Provide tuition to secondary school students'
   ),
@@ -81,21 +81,21 @@ export const events = [
     '2023-06-03',
     '1300hrs to 1800hrs',
     '1230hrs',
-    'Please feel free to bring along any house cleaning equipments.',
+    'Please feel free to bring along any household cleaning supplies.',
     false,
-    'Home cleaning of elderly living alone'
+    'Home cleaning for the elderly living alone'
   ),
   new Event(
     Math.round(Math.random() * 1000).toString(),
-    'Meals Delivery',
+    'Meal Delivery',
     'https://willinghearts.org.sg/wp-content/uploads/2014/04/wwhd-pic1.jpg',
     '123, Boon Ave 2, #01-02, Singapore 123456',
     '2023-06-03',
     '1300hrs to 1800hrs',
     '1230hrs',
-    'Please ensure you have google map downloaded on your mobile phone',
+    'Please ensure you have Google Maps downloaded on your mobile phone',
     true,
-    'Delivery of lunch to homes of elderly'
+    'Delivery of lunch to homes of the elderly'
   ),
 ];
 
