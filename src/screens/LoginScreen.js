@@ -7,6 +7,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Text,
+  Image
 } from "react-native";
 import validator from "validator";
 import OutlinedButton from "../Components/OutlineButton";
@@ -46,7 +47,15 @@ const LoginScreen = ({ setLoggedIn }) => {
   return (
     <TouchableWithoutFeedback onPress={handleContainerPress}>
       <View style={styles.container} showsVerticalScrollIndicator={false}>
-        <Text style={styles.headerText}>User Login</Text>
+        <Text style={styles.headerText}>Volunteer Scheduler</Text>
+        <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
+        <Image
+          source={require("../image/calendar.jpg")}
+          style={styles.image}
+          resizeMode="contain"
+        />
+      </View>
+      <Text style={styles.subText}>Please Login</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -86,15 +95,16 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 28,
     textAlign: "center",
-    marginTop: 50,
-    marginBottom: 20,
+    marginTop: 80,
+    marginBottom: 5,
     color: "#1F75FE",
     fontWeight: "bold",
   },
   subText: {
-    fontSize: 16,
+    fontSize: 12,
     textAlign: "center",
     marginBottom: 10,
+    color: "#000f89",
   },
   inputContainer: {
     borderWidth: 1,
@@ -112,6 +122,14 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   completionBtn: {
-    marginTop: 20,
+    marginTop: 10,
+  },
+  imageContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  image: {
+    width: 500,
+    height: 370,
   },
 });
