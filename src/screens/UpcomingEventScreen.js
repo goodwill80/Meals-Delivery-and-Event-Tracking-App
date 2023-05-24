@@ -50,6 +50,7 @@ function UpcomingEventScreen({ navigation }) {
                     eventId: event.item?.id,
                     addresses: addresses,
                     actualEventId: event.item?.event.id,
+                    actualEvent: event.item?.event,
                   }
                 )
               }

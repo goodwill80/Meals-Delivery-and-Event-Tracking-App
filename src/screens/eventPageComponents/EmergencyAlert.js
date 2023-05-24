@@ -5,7 +5,7 @@ import { useGlobalEventsContext } from '../../../Store/context/events-context';
 import * as ExpoImagePicker from 'expo-image-picker';
 // import { emergencies } from '../../../Data/Dummy_data';
 
-function EmergencyAlert({ volunteer, event }) {
+function EmergencyAlert({ volunteer, event, address = '', name = '' }) {
   const { setEmergencies } = useGlobalEventsContext();
   const [remarks, setRemarks] = useState(null);
   const [image, setImage] = useState(null);
@@ -21,7 +21,7 @@ function EmergencyAlert({ volunteer, event }) {
       alert('Please enter some remarks');
       return;
     }
-    setEmergencies(volunteer, event, remarks, image);
+    setEmergencies(volunteer, event, remarks, image, address, name);
     setRemarks(null);
     setImage(null);
     alert('Thank you, your concern has been submitted');
@@ -111,7 +111,12 @@ function EmergencyAlert({ volunteer, event }) {
       </View>
 
       <View style={styles.submitBtn}>
-        <Button onPress={submitConcern} title="Submit" bgColor="#97233F" />
+        <Button
+          onPress={submitConcern}
+          title="Submit"
+          bgColor="#97233F"
+          color={'white'}
+        />
       </View>
     </View>
   );
