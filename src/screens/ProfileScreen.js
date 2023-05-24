@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 // import { volunteers } from '../../Data/Dummy_data';
 import { useGlobalEventsContext } from "../../Store/context/events-context";
 
@@ -16,14 +16,54 @@ function ProfileScreen() {
 
   return (
     <View style={styles.container} showsVerticalScrollIndicator={false}>
-      <Text style={styles.header}>Welcome to your profile!</Text>
-      <View style={styles.volunteerContainer}>
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>{volunteer?.name}'s profile</Text>
         <View style={styles.imageContainer}>
           <Image
             style={styles.imageDetails}
             source={{ uri: `${volunteer?.imageUrl}` }}
           />
         </View>
+      </View>
+      <View style={styles.completedContainer}>
+        <View style={styles.eventContainer}>
+          <View style={styles.eventTextContainer}>
+            <Text style={styles.eventNumberStyle}>143</Text>
+            <Text style={styles.eventTextStyle}>Hours volunteered</Text>
+          </View>
+        </View>
+        <View style={styles.eventContainer}>
+          <View style={styles.eventTextContainer}>
+            <Text style={styles.eventNumberStyle}>36</Text>
+            <Text style={styles.eventTextStyle}>Events completed</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.recentlyCompletedContainer}>
+        <View style={styles.recentlyCompletedTextContainer}>
+          <Text style={styles.recentlyCompletedHeader}>
+            Recently completed:
+          </Text>
+          <Text style={styles.recentlyCompletedSubheader}>
+          {`\u2022`} Elderly Home Cleaning
+          </Text>
+          <Text style={styles.recentlyCompletedSubheader}>
+          {`\u2022`} Meal Delivery
+          </Text>
+          <Text style={styles.viewAll}>
+          View all {`\u00BB`} 
+          </Text>
+        </View>
+      </View>
+      <View style={styles.profileContainer}>
+        <Text style={styles.profileText}>Personal details</Text>
+        <Text style={styles.profileArrow}>{`\u00BB`}</Text>
+      </View>
+      <View style={styles.profileContainer}>
+        <Text style={styles.profileText}>Edit your profile</Text>
+        <Text style={styles.profileArrow}>{`\u00BB`}</Text>
+      </View>
+      {/* <View style={styles.volunteerContainer}>
         <View>
           <View style={styles.textContainer}>
             <Text style={styles.subheader}>ID: </Text>
@@ -42,7 +82,7 @@ function ProfileScreen() {
             <Text style={styles.volunteerInfo}>{volunteer?.phone}</Text>
           </View>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -50,12 +90,17 @@ function ProfileScreen() {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: "row",
+    gap: 90,
+    marginTop: 30,
+  },
   container: {
     flex: 1,
     alignItems: "center",
   },
   header: {
-    padding: 19,
+    paddingTop: 40,
     fontSize: 16,
     fontWeight: "bold",
     fontSize: 25,
@@ -73,19 +118,125 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   imageDetails: {
-    height: 200,
-    width: 200,
-    borderRadius: 50 / 2,
+    height: 100,
+    width: 100,
+    borderRadius: 100 / 2,
   },
-  textContainer: {
+  completedContainer: {
     flexDirection: "row",
+    gap: 30,
+    marginTop: 20,
   },
-  subheader: {
-    fontSize: 20,
+  eventContainer: {
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderColor: "transparent",
+    borderRadius: 12,
+    overflow: "hidden",
+    shadowColor: "gray",
+    shadowOpacity: 0.5,
+    height: 130,
+    marginBottom: 16,
+    width: 130,
+    backgroundColor: "#1F75FE",
+  },
+  eventTextContainer: {
+    flexDirection: "column"
+  },
+  eventNumberStyle:{
+    fontSize: 40,
     fontWeight: "bold",
+    marginTop: 20,
+    marginLeft: 25,
+    color: "white",
   },
-  volunteerInfo: {
-    fontSize: 20,
-    color: "black",
+  eventTextStyle: {
+    fontSize: 18,
+    marginLeft: 25,
+    color: "white",
   },
+  recentlyCompletedContainer: {
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderColor: "#1F75FE",
+    borderRadius: 12,
+    overflow: "hidden",
+    shadowColor: "gray",
+    shadowOpacity: 0.5,
+    height: 130,
+    marginBottom: 25,
+    width: 300,
+    backgroundColor: "FFF",
+    marginTop: 10,
+  },
+  recentlyCompletedTextContainer: {
+    flexDirection: "column"
+  },
+  recentlyCompletedHeader: {
+    marginTop: 15,
+    marginLeft: 20,
+    marginBottom: 10,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#00308F",
+  },
+  recentlyCompletedSubheader: {
+    marginTop: 5,
+    marginLeft: 20,
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#6699CC",
+  },
+  viewAll: {
+    marginTop: 5,
+    marginRight: 20,
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#00308F",
+    textAlign: "right",
+  },
+  profileContainer: {
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderColor: "transparent",
+    borderRadius: 12,
+    overflow: "hidden",
+    shadowColor: "gray",
+    shadowOpacity: 0.5,
+    height: 50,
+    marginBottom: 16,
+    width: 300,
+    backgroundColor: "FFF",
+    marginTop: 0,
+    flexDirection: "row",
+    gap: 125,
+    backgroundColor: "#6699CC",
+  },
+  profileText: {
+    marginTop: 13.5,
+    marginLeft: 20,
+    marginBottom: 10,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
+  },
+  profileArrow: {
+    marginTop: 13,
+    marginLeft: 20,
+    marginBottom: 10,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
+  },
+  // textContainer: {
+  //   flexDirection: "row",
+  // },
+  // subheader: {
+  //   fontSize: 20,
+  //   fontWeight: "bold",
+  // },
+  // volunteerInfo: {
+  //   fontSize: 20,
+  //   color: "black",
+  // },
 });
