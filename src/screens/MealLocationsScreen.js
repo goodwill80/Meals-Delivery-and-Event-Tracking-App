@@ -21,8 +21,10 @@ function MealLocationsScreen() {
   const route = useRoute();
   const volunteerId = route.params?.volunteerId;
   const eventId = route.params?.eventId;
-  const event = route.params.event;
+  const event = route.params?.actualEvent;
   const actualEventId = route.params?.actualEventId;
+
+  // console.log(event.place);
 
   useEffect(() => {
     if (volunteerId) {
@@ -75,40 +77,53 @@ function MealLocationsScreen() {
           </View>
         </View>
       ) : (
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={locations}
-          renderItem={(itemData) => {
-            return (
-              <Pressable
-                onPress={() =>
-                  navigation.navigate('location details', {
-                    addresses: itemData.item,
-                    eventId: eventId,
-                    volunteerId: volunteerId,
-                    actualEventId: actualEventId,
-                    event: event,
-                  })
-                }
-                style={({ pressed }) => [pressed && styles.pressed]}
-              >
-                <View style={styles.itemContainer}>
-                  <View style={styles.firstRow}>
-                    <Text style={styles.headerText}>{itemData.item.bene}</Text>
-                    <Text style={styles.headerText}>
-                      {itemData.item.meal} lunch
-                    </Text>
+        <View>
+          <View style={styles.colectionTextContainer}>
+            <Text style={styles.collectionPointHeader}>
+              Ration Collection Point:
+            </Text>
+            <Text style={styles.collectionPointText}>{event.place}</Text>
+          </View>
+          <Text style={styles.locationsHeaderText}>
+            Scheduled Delivery Locations:
+          </Text>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={locations}
+            renderItem={(itemData) => {
+              return (
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate('location details', {
+                      addresses: itemData.item,
+                      eventId: eventId,
+                      volunteerId: volunteerId,
+                      actualEventId: actualEventId,
+                      event: event,
+                    })
+                  }
+                  style={({ pressed }) => [pressed && styles.pressed]}
+                >
+                  <View style={styles.itemContainer}>
+                    <View style={styles.firstRow}>
+                      <Text style={styles.headerText}>
+                        {itemData.item.bene}
+                      </Text>
+                      <Text style={styles.headerText}>
+                        {itemData.item.meal} lunch
+                      </Text>
+                    </View>
+                    <Text style={styles.headerText}>Deliver to:</Text>
+                    <View>
+                      <Text>{itemData.item.address}</Text>
+                    </View>
                   </View>
-                  <Text style={styles.headerText}>Deliver to:</Text>
-                  <View>
-                    <Text>{itemData.item.address}</Text>
-                  </View>
-                </View>
-              </Pressable>
-            );
-          }}
-          keyExtractor={(item) => item.id}
-        />
+                </Pressable>
+              );
+            }}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
       )}
     </View>
   );
@@ -173,5 +188,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '100%',
     height: 60,
+  },
+  colectionTextContainer: {
+    gap: 10,
+    marginBottom: 30,
+  },
+  collectionPointHeader: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    marginTop: 30,
+    color: '#007FFF',
+  },
+  collectionPointText: {
+    fontSize: 16,
+  },
+  locationsHeaderText: {
+    fontSize: 18,
+    marginBottom: 10,
+    fontWeight: 'bold',
+    color: '#6F00FF',
   },
 });

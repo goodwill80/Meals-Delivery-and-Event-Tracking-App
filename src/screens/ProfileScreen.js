@@ -1,7 +1,7 @@
-import { useLayoutEffect, useState } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { useLayoutEffect, useState } from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 // import { volunteers } from '../../Data/Dummy_data';
-import { useGlobalEventsContext } from "../../Store/context/events-context";
+import { useGlobalEventsContext } from '../../Store/context/events-context';
 
 function ProfileScreen() {
   const { getVolunteerById } = useGlobalEventsContext();
@@ -45,14 +45,12 @@ function ProfileScreen() {
             Recently completed:
           </Text>
           <Text style={styles.recentlyCompletedSubheader}>
-          {`\u2022`} Elderly Home Cleaning
+            {`\u2022`} Elderly Home Cleaning
           </Text>
           <Text style={styles.recentlyCompletedSubheader}>
-          {`\u2022`} Meal Delivery
+            {`\u2022`} Meal Delivery
           </Text>
-          <Text style={styles.viewAll}>
-          View all {`\u00BB`} 
-          </Text>
+          <Text style={styles.viewAll}>View all {`\u00BB`}</Text>
         </View>
       </View>
       <View style={styles.profileContainer}>
@@ -91,29 +89,29 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flexDirection: "row",
-    gap: 90,
+    flexDirection: 'row',
+    gap: 40,
     marginTop: 30,
   },
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
   },
   header: {
     paddingTop: 40,
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 25,
   },
   volunteerContainer: {
-    alignItems: "center",
+    alignItems: 'center',
     paddingTop: 45,
     paddingBottom: 50,
   },
   imageContainer: {
-    width: "30%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: '30%',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingVertical: 4,
     paddingBottom: 20,
   },
@@ -123,110 +121,110 @@ const styles = StyleSheet.create({
     borderRadius: 100 / 2,
   },
   completedContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 30,
     marginTop: 20,
   },
   eventContainer: {
     marginHorizontal: 8,
     borderWidth: 1,
-    borderColor: "transparent",
+    borderColor: 'transparent',
     borderRadius: 12,
-    overflow: "hidden",
-    shadowColor: "gray",
+    overflow: 'hidden',
+    shadowColor: 'gray',
     shadowOpacity: 0.5,
     height: 130,
     marginBottom: 16,
     width: 130,
-    backgroundColor: "#1F75FE",
+    backgroundColor: '#1F75FE',
   },
   eventTextContainer: {
-    flexDirection: "column"
+    flexDirection: 'column',
   },
-  eventNumberStyle:{
+  eventNumberStyle: {
     fontSize: 40,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: 20,
     marginLeft: 25,
-    color: "white",
+    color: 'white',
   },
   eventTextStyle: {
     fontSize: 18,
     marginLeft: 25,
-    color: "white",
+    color: 'white',
   },
   recentlyCompletedContainer: {
     marginHorizontal: 8,
     borderWidth: 1,
-    borderColor: "#1F75FE",
+    borderColor: '#1F75FE',
     borderRadius: 12,
-    overflow: "hidden",
-    shadowColor: "gray",
+    overflow: 'hidden',
+    shadowColor: 'gray',
     shadowOpacity: 0.5,
     height: 130,
     marginBottom: 25,
     width: 300,
-    backgroundColor: "FFF",
+    backgroundColor: 'FFF',
     marginTop: 10,
   },
   recentlyCompletedTextContainer: {
-    flexDirection: "column"
+    flexDirection: 'column',
   },
   recentlyCompletedHeader: {
     marginTop: 15,
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#00308F",
+    fontWeight: 'bold',
+    color: '#00308F',
   },
   recentlyCompletedSubheader: {
     marginTop: 5,
     marginLeft: 20,
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#6699CC",
+    fontWeight: 'bold',
+    color: '#6699CC',
   },
   viewAll: {
     marginTop: 5,
     marginRight: 20,
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#00308F",
-    textAlign: "right",
+    fontWeight: 'bold',
+    color: '#00308F',
+    textAlign: 'right',
   },
   profileContainer: {
     marginHorizontal: 8,
     borderWidth: 1,
-    borderColor: "transparent",
+    borderColor: 'transparent',
     borderRadius: 12,
-    overflow: "hidden",
-    shadowColor: "gray",
+    overflow: 'hidden',
+    shadowColor: 'gray',
     shadowOpacity: 0.5,
     height: 50,
     marginBottom: 16,
     width: 300,
-    backgroundColor: "FFF",
+    backgroundColor: 'FFF',
     marginTop: 0,
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 125,
-    backgroundColor: "#6699CC",
+    backgroundColor: '#6699CC',
   },
   profileText: {
     marginTop: 13.5,
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: 'bold',
+    color: 'white',
   },
   profileArrow: {
     marginTop: 13,
     marginLeft: 20,
     marginBottom: 10,
     fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: 'bold',
+    color: 'white',
   },
   // textContainer: {
   //   flexDirection: "row",
