@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { View, Switch, StyleSheet, Image, Text } from "react-native"; // Import the Text component
+import { View, Switch, StyleSheet, Image, Text, Button } from "react-native";
 import { EventRegister } from "react-native-event-listeners";
-import OutlinedButton from "../Components/OutlineButton";
 
 function SettingsScreen({ setLoggedIn }) {
   const [darkMode, setDarkMode] = useState(false);
 
   const handleLogout = () => {
-    // Set logged in state to false
-    setLoggedIn(false);
+    setLoggedIn(false); // Set logged in state to false
   };
 
   return (
@@ -29,10 +27,13 @@ function SettingsScreen({ setLoggedIn }) {
           EventRegister.emit("changeTheme", value);
         }}
       />
-      <View style={styles.completionBtn}>
-        <OutlinedButton onPress={handleLogout} color="#1F75FE">
-          Logout
-        </OutlinedButton>
+      <View style={styles.logoutBtn}>
+        <Button
+          onPress={handleLogout}
+          title="Logout"
+          bgColor="#1F75FE"
+          color={'white'}
+        />
       </View>
     </View>
   );
@@ -43,11 +44,15 @@ export default SettingsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
-  completionBtn: {
+  logoutBtn: {
     marginTop: 20,
-    padding: 24,
+    borderWidth: 1,
+    borderColor: '#1F75FE',
+    borderRadius: 10,
+    backgroundColor: '#1F75FE',
+    width: '92%',
+    alignSelf: 'center',
   },
   imageContainer: {
     alignItems: "center",

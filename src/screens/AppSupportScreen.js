@@ -7,9 +7,9 @@ import {
   StyleSheet,
   Keyboard,
   TouchableWithoutFeedback,
+  Button
 } from "react-native";
 import validator from "validator";
-import OutlinedButton from "../Components/OutlineButton";
 
 function AppSupportScreen() {
   const [name, setName] = useState("");
@@ -81,10 +81,8 @@ function AppSupportScreen() {
             multiline
           />
         </View>
-        <View style={styles.completionBtn}>
-          <OutlinedButton onPress={handleSubmit} color="#1F75FE">
-            Submit
-          </OutlinedButton>
+        <View style={styles.submitBtn}>
+          <Button onPress={handleSubmit} title="Submit" color="white" />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -126,7 +124,13 @@ const styles = StyleSheet.create({
     height: 80,
     color: "#000",
   },
-  completionBtn: {
+  submitBtn: {
     marginTop: 20,
+    borderWidth: 1,
+    borderColor: "#1F75FE",
+    borderRadius: 10,
+    backgroundColor: "#1F75FE",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
