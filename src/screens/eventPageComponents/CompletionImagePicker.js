@@ -64,7 +64,7 @@ function CompletionImagePicker({ event, volunteerId }) {
       quality: 1,
     });
 
-    console.log(result);
+    // console.log(result);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
@@ -134,6 +134,7 @@ function CompletionImagePicker({ event, volunteerId }) {
           onPress={submitCompletionOfEvent}
           title="Complete event"
           bgColor="#0000FF"
+          color={'white'}
         />
       </View>
     </View>

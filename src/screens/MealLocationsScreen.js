@@ -21,14 +21,8 @@ function MealLocationsScreen() {
   const route = useRoute();
   const volunteerId = route.params?.volunteerId;
   const eventId = route.params?.eventId;
-  const event = route.params;
+  const event = route.params.event;
   const actualEventId = route.params?.actualEventId;
-  // const actualEventId = route.params.actualEventId;
-  // const addresses = route.params?.addresses;
-
-  // console.log(volunteerId);
-  // console.log(eventId);
-  // console.log(actualEventId);
 
   useEffect(() => {
     if (volunteerId) {
@@ -93,6 +87,7 @@ function MealLocationsScreen() {
                     eventId: eventId,
                     volunteerId: volunteerId,
                     actualEventId: actualEventId,
+                    event: event,
                   })
                 }
                 style={({ pressed }) => [pressed && styles.pressed]}

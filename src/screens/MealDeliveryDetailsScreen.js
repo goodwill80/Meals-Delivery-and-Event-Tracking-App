@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
 import LocationMap from './eventPageComponents/LocationMap';
 import EmergencyAlert from './eventPageComponents/EmergencyAlert';
@@ -5,13 +6,15 @@ import { useRoute, useNavigation } from '@react-navigation/native';
 import { useGlobalEventsContext } from '../../Store/context/events-context';
 
 function MealDeliveryDetailsScreen() {
+  const [volunteer, setVolunteer] = useState();
+  const [program, setProgram] = useState();
   const navigation = useNavigation();
   const route = useRoute();
-  const { completeDelivery } = useGlobalEventsContext();
+  const { completeDelivery, getVolunteerById } = useGlobalEventsContext();
   const { address, meal, bene, id } = route.params.addresses;
   const volunteerId = route.params.volunteerId;
   const eventId = route.params.eventId;
-  const event = route.params.event;
+  const event = route.params;
   const actualEventId = route.params?.actualEventId;
 
   const complete = () => {
@@ -23,6 +26,17 @@ function MealDeliveryDetailsScreen() {
       actualEventId: actualEventId,
     });
   };
+
+  useEffect(() => {
+    if (volunteerId) {
+      const person = getVolunteerById(volunteerId);
+      const prog = person.scheduledEvents.find(
+        (evt) => evt.event.id === actualEventId
+      );
+      setProgram(prog.event);
+      setVolunteer(person);
+    }
+  }, []);
 
   return (
     <ScrollView>
@@ -44,7 +58,12 @@ function MealDeliveryDetailsScreen() {
         <Button onPress={complete} title="Complete" color="white" />
       </View>
       <View style={styles.emergencyContainer}>
-        <EmergencyAlert />
+        <EmergencyAlert
+          volunteer={volunteer}
+          event={program}
+          address={address}
+          name={bene}
+        />
       </View>
     </ScrollView>
   );
