@@ -9,10 +9,12 @@ function EmergencyScreen() {
     <View style={styles.container} showsVerticalScrollIndicator={false}>
       <Text style={styles.headerText}>Hi Admin,</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
+        {allEmergencies.length > 0 && (
+          <Text style={styles.subText}>Volunteers have raised concerns that require your attention and action.</Text>
+        )}
         {allEmergencies.length > 0 ? (
           allEmergencies.map((emergency) => (
             <View style={styles.eventContainer} key={emergency.id}>
-              <Text style={styles.subText}>Volunteers have raised concerns that require your attention and action.</Text>
               <View style={styles.mainContainer}>
                 <View style={styles.volunteerInfoContainer}>
                   <View style={styles.volunteerName}>

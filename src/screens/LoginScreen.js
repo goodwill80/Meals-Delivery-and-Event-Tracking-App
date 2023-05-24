@@ -34,7 +34,7 @@ const LoginScreen = ({ setLoggedIn }) => {
       return;
     }
 
-    Alert.alert("Logged in.", `User: ${email}\nWelcome!`);
+    Alert.alert("Logged in.", `User: ${email}`);
 
     setLoggedIn(true);
     console.log("Login successful!");
