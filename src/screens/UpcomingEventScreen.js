@@ -25,10 +25,10 @@ function UpcomingEventScreen({ navigation }) {
       const deliveries = eventsOutstanding.filter(
         (event) => event.addresses.length !== 0
       );
-      setAddresses(deliveries[0].addresses);
+      setAddresses(deliveries[0]?.addresses);
       setEvents(eventsOutstanding);
     }
-  }, [completeEvent]);
+  }, [completeEvent, useNavigation]);
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,9 @@ function UpcomingEventScreen({ navigation }) {
                   {
                     ...singleEvent,
                     volunteerId: 1,
+                    eventId: event.item?.id,
                     addresses: addresses,
+                    actualEventId: event.item?.event.id,
                   }
                 )
               }

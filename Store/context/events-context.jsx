@@ -30,6 +30,9 @@ function EventsContextProvider({ children }) {
         ? { ...evt, imageUrl: imageUrl, remarks: remarks, completed: true }
         : evt
     );
+
+    // const event = updatedEvents.find((event) => event.id === eventId);
+    // console.log(event.completed);
     const updatedVolunteer = {
       ...volunteer,
       scheduledEvents: [...updatedEvents],
@@ -44,13 +47,14 @@ function EventsContextProvider({ children }) {
     const volunteer = allVolunteers.find(
       (volunteer) => volunteer.id === volunteerId
     );
-    const event = volunteer.scheduledEvents.filter(
-      (evt) => evt.event.id === eventId
-    );
-    const deliveries = event.addresses.map((address) =>
+
+    const event = volunteer.scheduledEvents.find((evt) => evt.id === eventId);
+
+    const deliveries = event?.addresses.map((address) =>
       address.id === deliveryId ? { ...address, completed: true } : address
     );
     const updatedEvent = { ...event, addresses: [...deliveries] };
+    // console.log(updatedEvent);
     const updatedVolunteer = volunteer
       ? {
           ...volunteer,

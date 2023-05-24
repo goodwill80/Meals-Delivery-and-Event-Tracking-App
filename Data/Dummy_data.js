@@ -38,7 +38,7 @@ export const volunteers = [
 // Events
 export const events = [
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    1,
     'Befriended Service',
     'https://www.thebestsingapore.com/wp-content/uploads/2023/04/Best-Elderly-Care-Singapore-Review-720x408.jpg',
     '233, Ang Mo Kio Ave 2, #01-05, Singapore 123456',
@@ -50,7 +50,7 @@ export const events = [
     'Listen to stories and shared wisdoms'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    2,
     'School Care Service',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-2-1024x576.jpg',
     '123, Pasir Ris Ave 2, #01-02, Singapore 123456',
@@ -62,7 +62,7 @@ export const events = [
     'provide enrichments to afternoon primary school children'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    3,
     'Children Tuition',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-3-553x400.jpg',
     '123, Novena Road, #01-02, Singapore 123456',
@@ -74,7 +74,7 @@ export const events = [
     'Provide tuition to secondary school students'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    4,
     'Elderly Home Cleaning',
     'https://playfactoschool.com.sg/wp-content/uploads/2020/09/3-2-1024x576.jpg',
     '123, Pasir Ris Ave 2, #01-02, Singapore 123456',
@@ -86,7 +86,7 @@ export const events = [
     'Home cleaning of elderly living alone'
   ),
   new Event(
-    Math.round(Math.random() * 1000).toString(),
+    5,
     'Meals Delivery',
     'https://willinghearts.org.sg/wp-content/uploads/2014/04/wwhd-pic1.jpg',
     '123, Boon Ave 2, #01-02, Singapore 123456',
