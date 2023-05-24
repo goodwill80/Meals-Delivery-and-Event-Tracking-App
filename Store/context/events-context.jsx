@@ -15,7 +15,7 @@ function EventsContextProvider({ children }) {
   const [allVolunteers, setAllVolunteers] = useState(volunteers);
   const [allEvents, setAllEvents] = useState(events);
   const [allEmergencies, setAllEmergencies] = useState(emergencies);
-
+  // console.log(allEmergencies);
   const getVolunteerById = (id) => {
     const volunteer = allVolunteers.find((volunteer) => volunteer.id === id);
     if (volunteer) return volunteer;
@@ -83,7 +83,6 @@ function EventsContextProvider({ children }) {
       ...allEmergencies,
       new Emergency(volunteer, event, remarks, imageUrl, address, name),
     ]);
-    // console.log(allEmergencies);
   };
 
   const ctx = {

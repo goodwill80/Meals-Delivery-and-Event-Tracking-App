@@ -24,7 +24,7 @@ function LocationMap({ address }) {
   const [pickedLocation, setPickedLocation] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  const [mode, setMode] = useState(null);
+  const [mode, setMode] = useState('driving');
 
   // Retrieve location funtions
   const [locationPermissionInformation, requestPermission] =

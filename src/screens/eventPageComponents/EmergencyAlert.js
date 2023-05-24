@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TextInput, Button, Alert } from 'react-native';
 import IconButton from '../../Components/IconButton';
 import { useGlobalEventsContext } from '../../../Store/context/events-context';
 import * as ExpoImagePicker from 'expo-image-picker';
-import { emergencies } from '../../../Data/Dummy_data';
+// import { emergencies } from '../../../Data/Dummy_data';
 
 function EmergencyAlert({ volunteer, event }) {
   const { setEmergencies } = useGlobalEventsContext();
@@ -13,7 +13,6 @@ function EmergencyAlert({ volunteer, event }) {
   // OnChange for InputText
   const handleChangeRemarksText = (e) => {
     setRemarks(e);
-    console.log(remarks);
   };
 
   // Submit Concern Handler
@@ -21,9 +20,11 @@ function EmergencyAlert({ volunteer, event }) {
     if (!remarks) {
       alert('Please enter some remarks');
       return;
-    } 
+    }
     setEmergencies(volunteer, event, remarks, image);
-    alert('Thank you');
+    setRemarks(null);
+    setImage(null);
+    alert('Thank you, your concern has been submitted');
   };
 
   // *********** SDK Functions *********************
@@ -50,7 +51,7 @@ function EmergencyAlert({ volunteer, event }) {
     if (!result.canceled) {
       setImage(result.assets[0].uri);
     }
-   };
+  };
 
   // Pick Image
   const pickImage = async () => {
@@ -84,7 +85,7 @@ function EmergencyAlert({ volunteer, event }) {
         multiline={true}
         numberOfLines={4}
       />
-      <Text>{image ? "Image uploaded successfully" : "No image chosen"}</Text>
+      <Text>{image ? 'Image uploaded successfully' : 'No image chosen'}</Text>
       <View style={styles.buttonsContainer}>
         <IconButton
           text="Camera"
@@ -110,10 +111,7 @@ function EmergencyAlert({ volunteer, event }) {
       </View>
 
       <View style={styles.submitBtn}>
-        <Button onPress={submitConcern} 
-        title="Submit" 
-        bgColor="#97233F" 
-        />
+        <Button onPress={submitConcern} title="Submit" bgColor="#97233F" />
       </View>
     </View>
   );
