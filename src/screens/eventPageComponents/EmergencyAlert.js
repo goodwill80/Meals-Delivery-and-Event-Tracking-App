@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, StyleSheet, Text, TextInput, Button, Alert } from 'react-native';
 import IconButton from '../../Components/IconButton';
 import { useGlobalEventsContext } from '../../../Store/context/events-context';
+import * as ExpoImagePicker from 'expo-image-picker';
 
 function EmergencyAlert({ volunteer, event }) {
   const { setEmergencies } = useGlobalEventsContext;
@@ -18,7 +19,7 @@ function EmergencyAlert({ volunteer, event }) {
     if (!remarks) {
       alert('Please enter some remarks');
       return;
-    }
+    } 
     // setEmergencies(volunteer, event, remarks, image);
     alert('Thank you');
   };
@@ -26,10 +27,54 @@ function EmergencyAlert({ volunteer, event }) {
   // *********** SDK Functions *********************
 
   // Capture Image
-  const captureImage = () => {};
+  const captureImage = async () => {
+    if (Platform.OS !== 'web') {
+      const { status } = await ExpoImagePicker.requestCameraPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Sorry, we need camera permissions to make this work!');
+        return;
+      }
+    }
+    // Launch the camera to capture an image
+    let result = await ExpoImagePicker.launchCameraAsync({
+      mediaTypes: ExpoImagePicker.MediaTypeOptions.All, // Allow capturing both images and videos
+      aspect: [16, 9],
+      quality: 0.5,
+      allowsEditing: true,
+    });
+    console.log(result); // Log the result object to the console for debugging
+
+    // If the user did not cancel the image capture, update the "image" state with the captured image URI
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   // Pick Image
-  const pickImage = () => {};
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ExpoImagePicker.launchImageLibraryAsync({
+      mediaTypes: ExpoImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+  const imageName = () => {
+    if (image === null){
+      return <Text>No Image Uploaded</Text>
+    }
+    else {
+      return <Text>Image Uploaded Successfully</Text>
+    }
+  }
 
   return (
     <View style={styles.rootContainer}>
@@ -46,7 +91,7 @@ function EmergencyAlert({ volunteer, event }) {
         multiline={true}
         numberOfLines={4}
       />
-      <Text>No Image Uploaded</Text>
+      <Text>{imageName}</Text>
       <View style={styles.buttonsContainer}>
         <IconButton
           text="Camera"
@@ -72,7 +117,10 @@ function EmergencyAlert({ volunteer, event }) {
       </View>
 
       <View style={styles.submitBtn}>
-        <Button onPress={submitConcern} title="Submit" color={'white'} />
+        <Button onPress={submitConcern} 
+        title="Submit" 
+        bgColor="#97233F" 
+        />
       </View>
     </View>
   );

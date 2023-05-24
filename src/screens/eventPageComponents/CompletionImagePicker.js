@@ -133,7 +133,7 @@ function CompletionImagePicker({ event, volunteerId }) {
         <Button
           onPress={submitCompletionOfEvent}
           title="Complete event"
-          color={'white'}
+          bgColor="#0000FF"
         />
       </View>
     </View>
