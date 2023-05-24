@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 80,
     marginBottom: 5,
-    color: "#1F75FE",
+    color: "#000f89",
     fontWeight: "bold",
   },
   subText: {
