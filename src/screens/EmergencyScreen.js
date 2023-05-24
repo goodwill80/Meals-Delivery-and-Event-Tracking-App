@@ -7,10 +7,13 @@ function EmergencyScreen() {
 
   return (
     <View style={styles.container} showsVerticalScrollIndicator={false}>
-      <Text style={styles.headerText}>Hi Admin,</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={styles.headerText}>Hi Admin,</Text>
         {allEmergencies.length > 0 && (
-          <Text style={styles.subText}>Volunteers have raised concerns that require your attention and action.</Text>
+          <Text style={styles.subText}>
+            Volunteers have raised concerns that require your attention and
+            action.
+          </Text>
         )}
         {allEmergencies.length > 0 ? (
           allEmergencies.map((emergency) => (
@@ -52,7 +55,10 @@ function EmergencyScreen() {
           ))
         ) : (
           <View style={styles.container}>
-            <Text style={styles.emptyText}>We have not received any concerns or issues from our volunteers at this time.</Text>
+            <Text style={styles.emptyText}>
+              We have not received any concerns or issues from our volunteers at
+              this time.
+            </Text>
           </View>
         )}
       </ScrollView>
@@ -116,7 +122,7 @@ const styles = StyleSheet.create({
   detailsText: {
     fontSize: 14,
     marginBottom: 4,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   imageContainer: {
     height: 210,
