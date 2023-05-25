@@ -1,5 +1,12 @@
 import { useLayoutEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+} from 'react-native';
 // import { volunteers } from '../../Data/Dummy_data';
 import { useGlobalEventsContext } from '../../Store/context/events-context';
 
@@ -7,6 +14,7 @@ function ProfileScreen() {
   const { getVolunteerById, completeEvent } = useGlobalEventsContext();
   const [volunteer, setVolunteer] = useState();
   const [numberCompleted, setNumberCompleted] = useState();
+  const [completedEvents, setCompletedEvents] = useState([]);
 
   useLayoutEffect(() => {
     if (getVolunteerById(1)) {
@@ -14,6 +22,7 @@ function ProfileScreen() {
       setVolunteer(person);
       const events = person.scheduledEvents;
       const completed = events.filter((event) => event.completed);
+      setCompletedEvents(completed);
       setNumberCompleted(completed.length);
     }
   }, [completeEvent]);
@@ -48,12 +57,23 @@ function ProfileScreen() {
           <Text style={styles.recentlyCompletedHeader}>
             Recently completed:
           </Text>
-          <Text style={styles.recentlyCompletedSubheader}>
+          {completedEvents.length > 0 ? (
+            completedEvents.map((event) => (
+              <Text style={styles.recentlyCompletedSubheader}>
+                {`\u2022`} {event?.event.name}
+              </Text>
+            ))
+          ) : (
+            <Text style={styles.recentlyCompletedSubheader}>
+              {`\u2022`} No recent events
+            </Text>
+          )}
+          {/* <Text style={styles.recentlyCompletedSubheader}>
             {`\u2022`} Elderly Home Cleaning
           </Text>
           <Text style={styles.recentlyCompletedSubheader}>
             {`\u2022`} Meal Delivery
-          </Text>
+          </Text> */}
           <Pressable>
             <Text style={styles.viewAll}>View all {`\u00BB`}</Text>
           </Pressable>
@@ -167,11 +187,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     shadowColor: 'gray',
     // shadowOpacity: 0.5,
-    height: 130,
+    height: 'auto',
     marginBottom: 25,
     width: 305,
     backgroundColor: 'FFF',
     marginTop: 10,
+    paddingBottom: 10,
   },
   recentlyCompletedTextContainer: {
     flexDirection: 'column',
@@ -232,15 +253,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-  // textContainer: {
-  //   flexDirection: "row",
-  // },
-  // subheader: {
-  //   fontSize: 20,
-  //   fontWeight: "bold",
-  // },
-  // volunteerInfo: {
-  //   fontSize: 20,
-  //   color: "black",
-  // },
 });
