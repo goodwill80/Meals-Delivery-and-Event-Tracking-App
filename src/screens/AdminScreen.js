@@ -7,9 +7,9 @@ import {
   StyleSheet,
   Keyboard,
   TouchableWithoutFeedback,
+  Button,
 } from "react-native";
 import validator from "validator";
-import OutlinedButton from "../Components/OutlineButton";
 import { useNavigation } from "@react-navigation/native";
 
 function AdminScreen() {
@@ -71,10 +71,8 @@ function AdminScreen() {
             secureTextEntry={true}
           />
         </View>
-        <View style={styles.completionBtn}>
-          <OutlinedButton onPress={handleSubmit} color="#1F75FE">
-            Login
-          </OutlinedButton>
+        <View style={styles.loginBtn}>
+          <Button onPress={handleSubmit} title="Login" color="white" />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -116,7 +114,13 @@ const styles = StyleSheet.create({
     height: 80,
     color: "#000",
   },
-  completionBtn: {
+  loginBtn: {
     marginTop: 20,
+    borderWidth: 1,
+    borderColor: "#1F75FE",
+    borderRadius: 10,
+    backgroundColor: "#1F75FE",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

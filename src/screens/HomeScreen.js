@@ -12,7 +12,7 @@ function HomeScreen() {
           resizeMode="contain"
         />
       </View>
-      <Text style={styles.headerText}>Welcome!</Text>
+      <Text style={styles.headerText}>Welcome Jon!</Text>
       <Text style={styles.subText}>
         Thank you for volunteering with us!
         {"\n"}

@@ -14,7 +14,7 @@ function MealDeliveryDetailsScreen() {
   const { address, meal, bene, id } = route.params.addresses;
   const volunteerId = route.params.volunteerId;
   const eventId = route.params.eventId;
-  const event = route.params;
+  const event = route.params.event;
   const actualEventId = route.params?.actualEventId;
 
   const complete = () => {

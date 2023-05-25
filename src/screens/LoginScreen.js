@@ -7,10 +7,10 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Text,
-  Image
+  Image,
+  Button,
 } from "react-native";
 import validator from "validator";
-import OutlinedButton from "../Components/OutlineButton";
 
 const LoginScreen = ({ setLoggedIn }) => {
   const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ const LoginScreen = ({ setLoggedIn }) => {
       return;
     }
 
-    Alert.alert("Logged in.", `User: ${email}\nWelcome!`);
+    Alert.alert("Logged in.", `User: ${email}`);
 
     setLoggedIn(true);
     console.log("Login successful!");
@@ -49,13 +49,13 @@ const LoginScreen = ({ setLoggedIn }) => {
       <View style={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={styles.headerText}>Volunteer Scheduler</Text>
         <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
-        <Image
-          source={require("../image/calendar.jpg")}
-          style={styles.image}
-          resizeMode="contain"
-        />
-      </View>
-      <Text style={styles.subText}>Please Login</Text>
+          <Image
+            source={require("../image/calendar.jpg")}
+            style={styles.image}
+            resizeMode="contain"
+          />
+        </View>
+        <Text style={styles.subText}>Please Login</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -75,10 +75,9 @@ const LoginScreen = ({ setLoggedIn }) => {
             onChangeText={(text) => setPassword(text)}
           />
         </View>
-        <View style={styles.completionBtn}>
-          <OutlinedButton onPress={handleLogin} color="#1F75FE">
-            Login
-          </OutlinedButton>
+        <View style={styles.loginBtn}>
+          <Button onPress={handleLogin} title="Login" bgColor="#0000FF"
+          color={'white'} />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -117,12 +116,12 @@ const styles = StyleSheet.create({
     height: 40,
     color: "#000",
   },
-  messageInput: {
-    height: 80,
-    color: "#000",
-  },
-  completionBtn: {
-    marginTop: 10,
+  loginBtn: {
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: "#000f89",
+    borderRadius: 10,
+    backgroundColor: "#000f89",
   },
   imageContainer: {
     alignItems: "center",

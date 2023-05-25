@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet, LogBox } from 'react-native';
 
 import {
   NavigationContainer,
@@ -117,6 +117,7 @@ function MainTabNavigator() {
 }
 
 function App() {
+  LogBox.ignoreAllLogs(); // Disable all yellow box warnings
   const theme = useContext(themeContext);
   const [darkMode, setDarkMode] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
