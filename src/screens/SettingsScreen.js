@@ -18,7 +18,7 @@ function SettingsScreen({ setLoggedIn }) {
           resizeMode="contain"
         />
       </View>
-      <Text style={styles.headerText}>Settings</Text>
+      <Text style={styles.headerText}>See You!</Text>
       {/* <Switch
         style={{ alignItems: "center", justifyContent: "center" }}
         value={darkMode}
@@ -46,12 +46,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logoutBtn: {
-    marginTop: 20,
     borderWidth: 1,
     borderColor: '#1F75FE',
     borderRadius: 10,
     backgroundColor: '#1F75FE',
-    width: '92%',
+    width: '90%',
     alignSelf: 'center',
   },
   imageContainer: {
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#1F75FE",
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 20,
   },
 });
