@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
   logoutBtn: {
     marginTop: 20,
     borderWidth: 1,
-    borderColor: '#007791',
+    borderColor: '#1F75FE',
     borderRadius: 10,
-    backgroundColor: '#007791',
+    backgroundColor: '#1F75FE',
     width: '92%',
     alignSelf: 'center',
   },

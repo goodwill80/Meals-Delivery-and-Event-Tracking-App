@@ -188,6 +188,16 @@ function App() {
                 }}
               />
               <Drawer.Screen
+                name="Settings"
+                component={() => <SettingsScreen setLoggedIn={setLoggedIn} />}
+                options={{
+                  title: 'Settings',
+                  drawerIcon: ({ color, size }) => (
+                    <Ionicons name="md-apps-sharp" color={color} size={size} />
+                  ),
+                }}
+              />
+              <Drawer.Screen
                 name="AppSupport"
                 component={AppSupportScreen}
                 options={{
@@ -198,16 +208,6 @@ function App() {
                       color={color}
                       size={size}
                     />
-                  ),
-                }}
-              />
-              <Drawer.Screen
-                name="Settings"
-                component={() => <SettingsScreen setLoggedIn={setLoggedIn} />}
-                options={{
-                  title: 'Settings',
-                  drawerIcon: ({ color, size }) => (
-                    <Ionicons name="md-apps-sharp" color={color} size={size} />
                   ),
                 }}
               />
