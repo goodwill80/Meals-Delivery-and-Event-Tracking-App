@@ -50,7 +50,7 @@ const LoginScreen = ({ setLoggedIn }) => {
         <Text style={styles.headerText}>Volunteer Scheduler</Text>
         <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
           <Image
-            source={require("../image/calendar.jpg")}
+            source={require("../image/calendar.png")}
             style={styles.image}
             resizeMode="contain"
           />
@@ -95,15 +95,15 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     marginTop: 80,
-    marginBottom: 5,
-    color: "#000f89",
+    color: "#1F75FE",
     fontWeight: "bold",
+  
   },
   subText: {
     fontSize: 12,
     textAlign: "center",
     marginBottom: 10,
-    color: "#000f89",
+    color: "#00308F",
   },
   inputContainer: {
     borderWidth: 1,
@@ -119,16 +119,16 @@ const styles = StyleSheet.create({
   loginBtn: {
     marginTop: 20,
     borderWidth: 1,
-    borderColor: "#000f89",
+    borderColor: "#1F75FE",
     borderRadius: 10,
-    backgroundColor: "#000f89",
+    backgroundColor: "#1F75FE",
   },
   imageContainer: {
     alignItems: "center",
     marginBottom: 20,
   },
   image: {
-    width: 500,
-    height: 370,
+    width: 400,
+    height: 340,
   },
 });
