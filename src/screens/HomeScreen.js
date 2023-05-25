@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 28,
     textAlign: "center",
-    color: "#1F75FE",
+    color: "#324AB2",
     fontWeight: "bold",
     marginTop: 40,
   },
