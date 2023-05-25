@@ -2,7 +2,7 @@ export class scheduledEvent {
   constructor(event, completed) {
     this.id = Math.round(Math.random() * 1000).toString();
     this.event = event;
-    this.addresses = [];
+    this.addresses = []; // Meals on wheels 
     this.completed = completed ? completed : false;
     this.imageUrl = '';
     this.remarks = '';

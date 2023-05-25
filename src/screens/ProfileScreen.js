@@ -4,15 +4,19 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import { useGlobalEventsContext } from '../../Store/context/events-context';
 
 function ProfileScreen() {
-  const { getVolunteerById } = useGlobalEventsContext();
+  const { getVolunteerById, completeEvent } = useGlobalEventsContext();
   const [volunteer, setVolunteer] = useState();
+  const [numberCompleted, setNumberCompleted] = useState();
 
   useLayoutEffect(() => {
     if (getVolunteerById(1)) {
       const person = getVolunteerById(1);
       setVolunteer(person);
+      const events = person.scheduledEvents;
+      const completed = events.filter((event) => event.completed);
+      setNumberCompleted(completed.length);
     }
-  }, []);
+  }, [completeEvent]);
 
   return (
     <View style={styles.container} showsVerticalScrollIndicator={false}>
@@ -28,13 +32,13 @@ function ProfileScreen() {
       <View style={styles.completedContainer}>
         <View style={styles.eventContainer}>
           <View style={styles.eventTextContainer}>
-            <Text style={styles.eventNumberStyle}>143</Text>
+            <Text style={styles.eventNumberStyle}>{numberCompleted * 5}</Text>
             <Text style={styles.eventTextStyle}>Hours volunteered</Text>
           </View>
         </View>
         <View style={styles.eventContainer}>
           <View style={styles.eventTextContainer}>
-            <Text style={styles.eventNumberStyle}>36</Text>
+            <Text style={styles.eventNumberStyle}>{numberCompleted}</Text>
             <Text style={styles.eventTextStyle}>Events completed</Text>
           </View>
         </View>
@@ -160,7 +164,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     shadowColor: 'gray',
-    shadowOpacity: 0.5,
+    // shadowOpacity: 0.5,
     height: 130,
     marginBottom: 25,
     width: 300,
