@@ -20,7 +20,7 @@ function UpcomingEventScreen({ navigation }) {
     if (getVolunteerById(1)) {
       const volunteer = getVolunteerById(1);
       const eventsOutstanding = volunteer?.scheduledEvents.filter(
-        (evt) => !evt.completed
+        (evt) => !evt.completed 
       );
       const deliveries = eventsOutstanding.filter(
         (event) => event.addresses.length !== 0

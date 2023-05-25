@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 // import { volunteers } from '../../Data/Dummy_data';
 import { useGlobalEventsContext } from '../../Store/context/events-context';
 
@@ -54,7 +54,9 @@ function ProfileScreen() {
           <Text style={styles.recentlyCompletedSubheader}>
             {`\u2022`} Meal Delivery
           </Text>
-          <Text style={styles.viewAll}>View all {`\u00BB`}</Text>
+          <Pressable>
+            <Text style={styles.viewAll}>View all {`\u00BB`}</Text>
+          </Pressable>
         </View>
       </View>
       <View style={styles.profileContainer}>
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.5,
     height: 130,
     marginBottom: 25,
-    width: 300,
+    width: 305,
     backgroundColor: 'FFF',
     marginTop: 10,
   },
@@ -207,7 +209,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     height: 50,
     marginBottom: 16,
-    width: 300,
+    width: 305,
     backgroundColor: 'FFF',
     marginTop: 0,
     flexDirection: 'row',
