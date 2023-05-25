@@ -50,9 +50,9 @@ function ProfileScreen() {
           <Text style={styles.recentlyCompletedSubheader}>
           {`\u2022`} Meal Delivery
           </Text>
-          <Text style={styles.viewAll}>
+          <Button style={styles.viewAll}>
           View all {`\u00BB`} 
-          </Text>
+          </Button>
         </View>
       </View>
       <View style={styles.profileContainer}>
