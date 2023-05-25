@@ -6,7 +6,7 @@ function AboutScreen() {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require("../image/seniors.jpg")}
+          source={require("../image/seniors.png")}
           style={styles.image}
           resizeMode="contain"
         />
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 400,
-    height: 390,
+    width: 430,
+    height: 300,
     marginBottom: 20,
   },
 });

@@ -19,14 +19,14 @@ function SettingsScreen({ setLoggedIn }) {
         />
       </View>
       <Text style={styles.headerText}>Settings</Text>
-      <Switch
+      {/* <Switch
         style={{ alignItems: "center", justifyContent: "center" }}
         value={darkMode}
         onValueChange={(value) => {
           setDarkMode(value);
           EventRegister.emit("changeTheme", value);
         }}
-      />
+      /> */}
       <View style={styles.logoutBtn}>
         <Button
           onPress={handleLogout}

@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     shadowColor: 'gray',
-    shadowOpacity: 0.5,
+    // shadowOpacity: 0.5,
     height: 150,
     marginBottom: 16,
   },

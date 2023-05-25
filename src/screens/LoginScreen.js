@@ -76,8 +76,12 @@ const LoginScreen = ({ setLoggedIn }) => {
           />
         </View>
         <View style={styles.loginBtn}>
-          <Button onPress={handleLogin} title="Login" bgColor="#0000FF"
-          color={'white'} />
+          <Button
+            onPress={handleLogin}
+            title="Login"
+            bgColor="#0000FF"
+            color={"white"}
+          />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -97,7 +101,6 @@ const styles = StyleSheet.create({
     marginTop: 80,
     color: "#1F75FE",
     fontWeight: "bold",
-  
   },
   subText: {
     fontSize: 12,
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   image: {
-    width: 400,
-    height: 340,
+    width: 1200,
+    height: 310,
   },
 });
