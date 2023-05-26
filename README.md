@@ -36,7 +36,7 @@ An administrator or a staff will be able to:
 ### Process Flow for a Single Event
 ![My Image](Process-Flow-Single-Event.png)
 
-### Process Flow for Meals-on-wheels Event with multiple locations
+### Process Flow for a Meals-on-wheels Event (with multiple locations)
 ![My Image](Process-Flow-Meals-Delivery.png)
 
 ### Misc Screenshots
