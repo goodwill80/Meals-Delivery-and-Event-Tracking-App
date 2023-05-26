@@ -11,15 +11,16 @@
 5. expo-location
 6. Google Maps API
 
-### User Story 
-1 volunteer will be able to:
+### User Story for a volunteer
+volunteer will be able to:
 2. login and view list of events that have been assigned to him/her.
 3. click into each individual event to view reporting instructions.
 4. get current GPS coordinates and navigate to the event location using google map.
 5. update completion status, along with photo attachments or comments, if any.
 6. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
 
-1. administrator or staff will be able to: 
+### User Story for a charity organisation
+administrator or staff will be able to: 
 2. login and view the list of events that are currently on-going
 3. view list of alerts and feedback submitted by volunteers in real-time
 
