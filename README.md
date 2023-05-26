@@ -6,10 +6,10 @@
 ### Technology used
 1. Javascript
 2. React Native with Expo
-3. expo-image-picker
-4. react-native-maps
-5. expo-web-browser
-6. expo-location
+3. Expo-image-picker
+4. React-native-maps
+5. Expo-web-browser
+6. Expo-location
 7. Google Maps API
 
 ### User story for a volunteer
