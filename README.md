@@ -1,7 +1,8 @@
 ## Meals Delivery and Event Tracking App (For volunteer Services)
 ### Description
-1. A react native (iOS / Android) application designed to enable volunteers to update completion status of events, and to submit alerts to the charity organisation in realtime on any issues concerning the beneficiaries.
-2. The mobile app also automates real-time tracking of events, allowing the charity organisation to keep track of all events as well as receiving real-time concerns and feedback directly from volunteers.
+1. A react native (prototype) application designed to help charity organisations keep track of its events and completion statuses. 
+2. Volunteers could also use the app to monitor upcoming events and update status of completed events, as well as submit alerts in realtime on critical issues concerning the beneficiaries (i.e. an elderly feeling unwell, suspected abuse cases and etc).
+3. The charity organization will in turn be able to automate tracking of events as well as receive real-time feedbacks directly from the volunteers.
 
 ### Technology used
 1. Javascript
