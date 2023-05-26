@@ -13,6 +13,9 @@
 6. Expo-location
 7. Google Maps API
 
+### Data / Resource
+Mock data stored in JSON format are used to demo the application. 
+
 ### User story of a volunteer
 Volunteer will be able to:
 1. login and view list of events assigned to him/her.
