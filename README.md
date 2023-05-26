@@ -19,9 +19,9 @@
 5. update completion status, along with photo attachments or comments, if any.
 6. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
 
-A administrator or staff will be able to: 
-1. login and view the list of events that are currently on-going
-2. view list of alerts and feedback submitted by volunteers in real-time
+1. administrator or staff will be able to: 
+2. login and view the list of events that are currently on-going
+3. view list of alerts and feedback submitted by volunteers in real-time
 
 
 ### Login Process
