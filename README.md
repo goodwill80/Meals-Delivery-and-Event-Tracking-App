@@ -4,12 +4,13 @@
 2. The mobile app also automates real-time tracking of events, allowing the charity organisation to keep track of all events as well as receiving real-time feedback.
 
 ### Technology used
-1. React Native with Expo
-2. expo-image-picker
-3. react-native-maps
-4. expo-web-browser
-5. expo-location
-6. Google Maps API
+1. Javascript
+2. React Native with Expo
+3. expo-image-picker
+4. react-native-maps
+5. expo-web-browser
+6. expo-location
+7. Google Maps API
 
 ### User story for a volunteer
 Volunteer will be able to:
