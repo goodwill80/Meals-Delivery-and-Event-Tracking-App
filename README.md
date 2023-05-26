@@ -20,7 +20,7 @@ Volunteer will be able to:
 4. update completion status, along with photo attachments or comments, if any.
 5. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
 
-### User Story of a charity organisation
+### User story of a charity organisation
 An administrator or a staff will be able to: 
 1. login and view list of events that are currently on-going
 2. view list of alerts and feedback submitted by volunteers in real-time
