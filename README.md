@@ -33,7 +33,7 @@ An administrator or a staff will be able to:
 ### Login Process
 ![My Image](Process-Flow-Login.png)
 
-### Process Flow for Single Event
+### Process Flow for a Single Event
 ![My Image](Process-Flow-Single-Event.png)
 
 ### Process Flow for Meals-on-wheels Event with multiple locations
