@@ -7,7 +7,7 @@ function HomeScreen() {
     <View style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
         <Image
-          source={require("../image/volunteer.png")}
+          source={require("../image/volunteers.jpg")}
           style={styles.image}
           resizeMode="contain"
         />
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 500,
-    height: 300,
+    width: 480,
+    height: 330,
   },
 });

@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 440,
-    height: 320,
+    width: 550,
+    height: 350,
   },
   headerText: {
     fontSize: 28,

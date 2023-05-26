@@ -50,7 +50,7 @@ const LoginScreen = ({ setLoggedIn }) => {
         <Text style={styles.headerText}>Volunteer Scheduler</Text>
         <View style={[styles.imageContainer, { backgroundColor: "#F2F2F2" }]}>
           <Image
-            source={require("../image/calendar.png")}
+            source={require("../image/calendar.jpg")}
             style={styles.image}
             resizeMode="contain"
           />
