@@ -2,7 +2,7 @@
 ### Description
 1. A react native (prototype) application designed to help charity organisations keep track of its events and completion statuses. 
 2. Volunteers could use the app to monitor upcoming events and update status of events, as well as to submit alerts in realtime on critical issues concerning the beneficiaries (i.e. an elderly feeling unwell, suspected abuse cases and etc).
-3. The charity organization will in turn be able to automate tracking of events as well as receive real-time feedbacks directly from the volunteers and send immediate assistance if neccessary. 
+3. The charity organization will in turn be able to automate tracking of events as well as receive real-time feedbacks directly from the volunteers and to send immediate assistance, if neccessary. 
 
 ### Technology used
 1. Javascript
