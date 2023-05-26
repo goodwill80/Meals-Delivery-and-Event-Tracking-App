@@ -11,7 +11,7 @@
 5. expo-location
 6. Google Maps API
 
-### User Story for a volunteer
+### User story for a volunteer
 Volunteer will be able to:
 1. login and view list of events that have been assigned to him/her.
 2. click into each individual event to view reporting instructions.
@@ -20,9 +20,9 @@ Volunteer will be able to:
 5. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
 
 ### User Story for a charity organisation
-1. administrator or staff will be able to: 
-2. login and view the list of events that are currently on-going
-3. view list of alerts and feedback submitted by volunteers in real-time
+An administrator or a staff will be able to: 
+1. login and view the list of events that are currently on-going
+2. view list of alerts and feedback submitted by volunteers in real-time
 
 
 ### Login Process
