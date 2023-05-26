@@ -13,15 +13,15 @@
 
 ### User story for a volunteer
 Volunteer will be able to:
-1. login and view list of events that have been assigned to him/her.
-2. click into each individual event to view reporting instructions.
+1. login and view list of events assigned to him/her.
+2. click into each event to view reporting instructions.
 3. get current GPS coordinates and navigate to the event location using google map.
 4. update completion status, along with photo attachments or comments, if any.
 5. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
 
 ### User Story for a charity organisation
 An administrator or a staff will be able to: 
-1. login and view the list of events that are currently on-going
+1. login and view list of events that are currently on-going
 2. view list of alerts and feedback submitted by volunteers in real-time
 
 
