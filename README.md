@@ -22,7 +22,7 @@ Volunteer will be able to:
 2. click into each event to view reporting instructions.
 3. get current GPS coordinates and navigate to the event location using google map.
 4. update completion status, along with photo attachments or comments, if any.
-5. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
+5. submit real-time alerts to highlight any areas of concern to the charity organization (i.e. elderly unwell, suspected abused cases)
 
 ### User story of a charity organisation
 An administrator or a staff will be able to: 
