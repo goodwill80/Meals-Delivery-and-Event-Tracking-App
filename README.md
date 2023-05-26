@@ -3,7 +3,15 @@
 1. A react native (mobile) application designed to enable volunteers to update status of completed tasks, and submit feedback in realtime  to the charity organisation on issues concerning the beneficiaries.
 2. The mobile app also automates real-time tracking of events, allowing the charity organisation to keep track of all events at a glance, as well as receiving real-time feedback.
 
-### User-Story in general
+### Technology used
+1. React Native with Expo
+2. expo-image-picker
+3. react-native-maps
+4. expo-web-browser
+5. expo-location
+6. Google Maps API
+
+### User Story 
 1 volunteer will be able to:
 2. login and view list of events that have been assigned to him/her.
 3. click into each individual event to view reporting instructions.
