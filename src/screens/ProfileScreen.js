@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     shadowColor: 'gray',
     // shadowOpacity: 0.5,
-    height: 'auto',
+    height: 'auto', //400
     marginBottom: 25,
     width: 305,
     backgroundColor: 'FFF',
