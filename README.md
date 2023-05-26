@@ -12,12 +12,12 @@
 6. Google Maps API
 
 ### User Story for a volunteer
-1. volunteer will be able to:
-2. login and view list of events that have been assigned to him/her.
-3. click into each individual event to view reporting instructions.
-4. get current GPS coordinates and navigate to the event location using google map.
-5. update completion status, along with photo attachments or comments, if any.
-6. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
+Volunteer will be able to:
+1. login and view list of events that have been assigned to him/her.
+2. click into each individual event to view reporting instructions.
+3. get current GPS coordinates and navigate to the event location using google map.
+4. update completion status, along with photo attachments or comments, if any.
+5. submit real-time alerts to highlight any areas of concerns to the charity organization (i.e. elderly unwell, suspected abused cases)
 
 ### User Story for a charity organisation
 1. administrator or staff will be able to: 
